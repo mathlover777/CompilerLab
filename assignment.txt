@@ -1,0 +1,25 @@
+Assignment - 1
+Sourav Sarkar
+11CS30037
+
+
+
+Loc		LABEL		Instruction		Operand		Object Code
+		TEST		START			2050		
+2050	FIRST		LDA				ALPHA		00205F
+2053				ADD				INCR		182065
+2056				SUB				ONE			1C205C
+2059				STA 			BETA		0C2062
+205C	ONE			WORD			1 			000001
+205F	ALPHA		RESW			1 			******
+2062	BETA		RESW			1 			******
+2065	INCR		RESW			1 			******
+2068				END				FIRST
+
+
+
+
+
+
+
+

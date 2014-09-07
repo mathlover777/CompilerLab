@@ -1,0 +1,21 @@
+( id
++
+epsilon
+( id
+*
+epsilon
+(
+id
+FIRSTPRODEND
+( id
++ epsilon
+( id
+* epsilon
+( id
+FIRSTNTEND
+$ )
+$ )
++ ) $
++ ) $
+* + ) $
+FOLLOWEND

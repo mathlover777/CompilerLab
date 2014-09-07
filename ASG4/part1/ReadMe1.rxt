@@ -1,0 +1,15 @@
+Part 1:
+
+In this part we have directly hardcoded all the FSM and simulated our buffer on all the FSM and accepted
+the one with max length. Key words are already stored in symbol_table , so when we get a word we check if 
+it is present in the symbol_tab as keyword or not and accordingly process
+
+to run "./FSM input.in"
+
+Sourav Sarkar
+11CS30037
+Shrihari A Bhat
+11CS30008
+
+
+# NOTE :  This part was submitted within deadline

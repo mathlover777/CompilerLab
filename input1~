@@ -1,0 +1,14 @@
+TEST START 1003
+FIRST LDA C
+MUL NINE
+BDD FIVE# wrong instruction
+ADD THIRTYTWO FORTY FIFTY#too many words
+#Comment test
+STA F
+ADD#two few words
+C RESWGUGGYFUGYUYGUGY 1# too large instruction
+C RESW 1# duplicate label
+FIVE WORD 5
+THIRYTWO WORD 32
+END FIRST
+

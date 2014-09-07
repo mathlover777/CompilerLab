@@ -1,0 +1,10 @@
+ [  id  ,  id  ,  id  ]  .  [  id  ,  id  ,  id  ] 
+ [  id  ,  id  ,  id  ]  X  [  id  ,  id  ,  id  ] 
+ [  id  ,  id  ,  id  ]  .  (  [  id  ,  id  ,  id  ]  X  [  id  ,  id  ,  id  ]  ) 
+ [  id  ,  id  ,  id  ]  .  [  id  ,  id  ,  id  ] 
+ [  id  ,  id  ,  id  ]  X  [  id  ,  id  ,  id  ] 
+ [  id  ,  id  ,  id  ]  .  (  [  id  ,  id  ,  id  ]  X  (  [  id  ,  id  ,  id  ]  +  [  id  ,  id  ,  id  ]  )  ) 
+ [  id  ,  id  ,  id  ]  +  [  id  ,  id  ,  id  ] 
+ [  id  ,  id  ,  id  ,  id  ]  *  id 
+ NORM  [  id  ,  id  ,  id  ,  id  ] 
+ [  id  ,  id  ,  id  ,  id  ]  #  (  [  id  ,  id  ,  id  ,  id  ]  ) 

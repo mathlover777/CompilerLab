@@ -1,0 +1,27 @@
+TEST	START		2000h
+SWAP 	MACRO 		&X,&Y
+		LDA 		&X
+		STA 		TEMP
+		LDA 		&Y
+		STA 		&X
+		LDA 		TEMP
+		STA 		&Y
+		MEND
+PRINT	MACRO		&AB,&CD
+		CCC			&AB
+		DDD			&CD
+		MEND
+		PRINT		JJ,II
+		LDA 		ONE
+		STA 		I
+		LDA 		FIVE
+		STA 		J
+		SWAP 		I,J
+		I RESW 		1
+		J RESW 		1
+		TEMP RESW 	1
+		ONE WORD 	1
+		FIVE WORD	5
+		PRINT		JJ,II
+		END FIRST
+		SWAP 		I,J

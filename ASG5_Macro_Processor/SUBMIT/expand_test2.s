@@ -1,0 +1,15 @@
+TEST START 2000
+FIRST LDA TWO
+#invoking macro 'SPOPT'
+#invoking macro 'PEROPT'
+ADD FIVE
+#invoking macro 'SPOPT'
+#invoking macro 'PEROPT'
+MUL NINE
+STA REST
+TWO WORD 2
+FIVE WORD 5
+NINE WORD 9
+REST RESW 1
+END FIRST
+

@@ -1,0 +1,15 @@
+Part 3:
+
+We were only able to submitted the generated DFA within deadline,This version is complete.
+At first NFA's are constructed from RegExp , then They are converted into DFA by subset constructions.
+DFAs are implemented as 2D tables.
+
+to run "./NFAD input.in"
+
+Sourav Sarkar
+11CS30037
+Shrihari A Bhat
+11CS30008
+
+
+#NOTE : We very sorry for the delay.We have tried our best.

@@ -1,0 +1,17 @@
+0000 TEST START 2000 0
+2000 FIRST LDA TWO 0
+#invoking macro 'SPOPT'
+#invoking macro 'PEROPT'
+2003 ! ADD FIVE 0
+#invoking macro 'SPOPT'
+#invoking macro 'PEROPT'
+2006 ! MUL NINE 0
+2009 ! STA REST 0
+#invoking macro 'SPORT'
+#invoking macro 'PEROPT'
+200C ! SUB BEE 1
+200F TWO WORD 2 0
+2012 FIVE WORD 5 0
+2015 NINE WORD 9 0
+2018 REST RESW 1 0
+201B ! END 2000 0

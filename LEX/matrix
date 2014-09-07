@@ -1,0 +1,51 @@
+
+
+DEF A [2
+
+,
+
+2];// example of multiline
+
+INIT A [1,2:4,-2];//check for init
+
+
+
+INIT
+A [1,2,3,4:5,6];//****invalid init dim missmatch
+
+DEF B
+
+ [2,2],CG[3,4];INIT 
+B    [4,5 : 6,    7];//line starting from prev line
+//,A[1,4:4,5];//comment
+PRINT A;//,   B;
+DEF C 
+
+[2,   2];DEF F 
+[2
+          ,
+2];//sfs ssdvdsvsd
+//fds  dsf d//fdsfdsfdsfsdds //sdf sf4 //ADD44
+//adfd fsfsfds;
+;
+DEF AM[3,7],AM1[3,400],AM2[4,7];
+MMUL AM,AM1,AM2;//**incorrect matrix mult
+DEF CX[2,4];
+ADD C,C,CX,
+
+
+,F
+;//**dim missmatch in addition
+ADD C,A,B;// Correct addition
+ADD C,A,S;//S**is not defined
+;CMUL C,C,5;
+//MMUL M5,M24,M4,;
+DEF M[3,7],M1[3,4],M2[4,7];MMUL
+           M   ,   M1
+,
+
+M2;//correct matrix mult
+PRINT C;
+PRINT CG;
+PRINT A,D;//**incorrect PRINT
+// sdfsfds

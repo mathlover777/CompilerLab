@@ -1,0 +1,1863 @@
+shrihari@ubuntu:~/Compilers/ASG8$ ./lalrparser <test.txt >output.txt 
+Starting parse
+Entering state 0
+//************************************************ GOTO to State:0
+Reading a token: Next token is token GLOBAL ()
+Shifting token GLOBAL ()
+Entering state 1
+//************************************************ ACTION:Shift to State:1
+//************************************************ starting the decilist part
+Reading a token: Next token is token DEF ()
+Shifting token DEF ()
+//************************************************ got a DEF corresponding to "def // Definitions"
+Entering state 3
+//************************************************ ACTION:Shift to State:3
+Reading a token: Next token is token ID ()
+Shifting token ID ()
+Entering state 7
+//************************************************ ACTION:Shift to State:7
+Reading a token: Next token is token COLON ()
+Reducing stack by rule 11 (line 82):
+//************************************************ ACTION:Reducing by sizeListO---->Epsilon
+-> $$ = nterm sizeListO ()
+//************************************************ sizeListO is gone 
+Stack now 0 1 3 7
+Entering state 30
+//************************************************ GOTO to State:30
+Reducing stack by rule 10 (line 80):
+//************************************************ ACTION:Reducing by var---->ID sizeListO
+   $1 = token ID ()
+   $2 = nterm sizeListO ()
+-> $$ = nterm var ()
+Stack now 0 1 3
+Entering state 10
+//************************************************ GOTO to State:10
+Next token is token COLON ()
+Reducing stack by rule 9 (line 77):
+//************************************************ ACTION:Reducing by varList---->var
+   $1 = nterm var ()
+-> $$ = nterm varList ()
+Stack now 0 1 3
+Entering state 9
+//************************************************ GOTO to State:9
+Next token is token COLON ()
+Shifting token COLON ()
+//************************************************ this is due to a":"int
+Entering state 36
+//************************************************ ACTION:Shift to State:36
+Reading a token: Next token is token INT ()
+Shifting token INT ()
+//************************************************ its the int
+Entering state 67
+//************************************************ ACTION:Shift to State:67
+Reducing stack by rule 15 (line 91):
+//************************************************ ACTION:Reducing by type---->INT
+   $1 = token INT ()
+-> $$ = nterm type ()
+Stack now 0 1 3 9 36
+//************************************************ making "INT" to type
+Entering state 70
+//************************************************ GOTO to State:70
+Reading a token: Next token is token SEMICOLON ()
+Shifting token SEMICOLON ()
+//************************************************ denotes end of the line a:int;
+Entering state 104
+//************************************************ ACTION:Shift to State:104
+Reducing stack by rule 6 (line 72):
+//************************************************ ACTION:Reducing by typeList ----> varList COLON type SEMICOLON
+   $1 = nterm varList ()
+   $2 = token COLON ()
+   $3 = nterm type ()
+   $4 = token SEMICOLON ()
+-> $$ = nterm typeList ()
+Stack now 0 1 3
+//************************************************ a:int; is reduced to typeList
+Entering state 8
+//************************************************ GOTO to State:8
+//************************************************ similarly start for b:int;
+Reading a token: Next token is token ID ()
+Shifting token ID ()
+Entering state 33
+//************************************************ ACTION:Shift to State:33
+Reading a token: Next token is token COLON ()
+Reducing stack by rule 11 (line 82):
+//************************************************ ACTION:Reducing by sizeListO---->Epsilon
+-> $$ = nterm sizeListO ()
+Stack now 0 1 3 8 33
+Entering state 30
+//************************************************ GOTO to State:30
+Reducing stack by rule 10 (line 80):
+//************************************************ ACTION:Reducing by var---->ID sizeListO
+   $1 = token ID ()
+   $2 = nterm sizeListO ()
+-> $$ = nterm var ()
+//************************************************ b is converted to var
+Stack now 0 1 3 8
+Entering state 10
+//************************************************ GOTO to State:10
+Next token is token COLON ()
+Reducing stack by rule 9 (line 77):
+//************************************************ ACTION:Reducing by varList---->var
+   $1 = nterm var ()
+-> $$ = nterm varList ()
+Stack now 0 1 3 8
+Entering state 34
+//************************************************ GOTO to State:34
+Next token is token COLON ()
+Shifting token COLON ()
+//************************************************ got the colon in b:int;
+Entering state 65
+//************************************************ ACTION:Shift to State:65
+Reading a token: Next token is token INT ()
+Shifting token INT ()
+Entering state 67
+//************************************************ ACTION:Shift to State:67
+Reducing stack by rule 15 (line 91):
+//************************************************ ACTION:Reducing by type---->INT
+   $1 = token INT ()
+-> $$ = nterm type ()
+//************************************************ INT <---type
+Stack now 0 1 3 8 34 65
+Entering state 103
+//************************************************ GOTO to State:103
+Reading a token: Next token is token SEMICOLON ()
+Shifting token SEMICOLON ()
+//************************************************ end of the line b:int;
+Entering state 123
+//************************************************ ACTION:Shift to State:123
+Reducing stack by rule 5 (line 71):
+//************************************************ ACTION:Reducing by typeList ---->	typeList varList COLON type SEMICOLON
+   $1 = nterm typeList ()
+   $2 = nterm varList ()
+   $3 = token COLON ()
+   $4 = nterm type ()
+   $5 = token SEMICOLON ()
+-> $$ = nterm typeList ()
+//************************************************ now a:int;b:int; are reduced to typeList
+Stack now 0 1 3
+Entering state 8
+//************************************************ GOTO to State:8
+//************************************************ starting for sum:float;
+Reading a token: Next token is token ID ()
+Shifting token ID ()
+Entering state 33
+//************************************************ ACTION:Shift to State:33
+Reading a token: Next token is token COLON ()
+Reducing stack by rule 11 (line 82):
+//************************************************ ACTION:Reducing by sizeListO---->Epsilon
+-> $$ = nterm sizeListO ()
+Stack now 0 1 3 8 33
+Entering state 30
+//************************************************ GOTO to State:30
+Reducing stack by rule 10 (line 80):
+//************************************************ ACTION:Reducing by var---->ID sizeListO
+   $1 = token ID ()
+   $2 = nterm sizeListO ()
+-> $$ = nterm var ()
+Stack now 0 1 3 8
+//************************************************ ID is reduced to var
+Entering state 10
+//************************************************ GOTO to State:10
+Next token is token COLON ()
+Reducing stack by rule 9 (line 77):
+//************************************************ ACTION:Reducing by varList---->var
+   $1 = nterm var ()
+-> $$ = nterm varList ()
+Stack now 0 1 3 8
+Entering state 34
+//************************************************ GOTO to State:34
+Next token is token COLON ()
+Shifting token COLON ()
+//************************************************ got the colon in sum:float;
+Entering state 65
+//************************************************ ACTION:Shift to State:65
+Reading a token: Next token is token FLOAT ()
+Shifting token FLOAT ()
+//************************************************ got the type FLOAT
+Entering state 66
+//************************************************ ACTION:Shift to State:66
+Reducing stack by rule 16 (line 92):
+//************************************************ ACTION:Reducing by type---->FLOAT
+   $1 = token FLOAT ()
+-> $$ = nterm type ()
+Stack now 0 1 3 8 34 65
+Entering state 103
+//************************************************ GOTO to State:103
+Reading a token: Next token is token SEMICOLON ()
+Shifting token SEMICOLON ()
+//************************************************ got the semicolon of sum:float;
+Entering state 123
+//************************************************ ACTION:Shift to State:123
+Reducing stack by rule 5 (line 71):
+//************************************************ ACTION:Reducing by typeList ---->	typeList varList COLON type SEMICOLON
+   $1 = nterm typeList ()
+   $2 = nterm varList ()
+   $3 = token COLON ()
+   $4 = nterm type ()
+   $5 = token SEMICOLON ()
+-> $$ = nterm typeList ()
+Stack now 0 1 3
+//************************************************ reducing a:int;b:int;sum:float; to typeList
+//************************************************ starting for
+                                                   point := product
+                                                   xpos:float;
+                                                   ypos:float;
+//************************************************                                                    
+Entering state 8
+//************************************************ GOTO to State:8
+Reading a token: Next token is token ID ()
+Shifting token ID ()
+//************************************************ got 
+Entering state 33
+//************************************************ ACTION:Shift to State:33
+Reading a token: Next token is token ASSIGN ()
+Shifting token ASSIGN ()
+Entering state 64
+//************************************************ ACTION:Shift to State:64
+//************************************************ got the assign in point:=product
+Reading a token: Next token is token PRODUCT ()
+Shifting token PRODUCT ()
+//************************************************ got the keyword product
+Entering state 102
+//************************************************ ACTION:Shift to State:102
+Reading a token: Next token is token ID ()
+Shifting token ID ()
+//************************************************ xpos
+Entering state 7
+//************************************************ ACTION:Shift to State:7
+Reading a token: Next token is token COLON ()
+Reducing stack by rule 11 (line 82):
+//************************************************ ACTION:Reducing by sizeListO---->Epsilon
+-> $$ = nterm sizeListO ()
+Stack now 0 1 3 8 33 64 102 7
+Entering state 30
+//************************************************ GOTO to State:30
+Reducing stack by rule 10 (line 80):
+//************************************************ ACTION:Reducing by var---->ID sizeListO
+   $1 = token ID ()
+   $2 = nterm sizeListO ()
+-> $$ = nterm var ()
+Stack now 0 1 3 8 33 64 102
+Entering state 10
+//************************************************ GOTO to State:10
+Next token is token COLON ()
+Reducing stack by rule 9 (line 77):
+//************************************************ ACTION:Reducing by varList---->var
+   $1 = nterm var ()
+-> $$ = nterm varList ()
+//************************************************ var is reduced to varlist
+Stack now 0 1 3 8 33 64 102
+Entering state 9
+//************************************************ GOTO to State:9
+Next token is token COLON ()
+Shifting token COLON ()
+//************************************************ got : in xpos:float;
+Entering state 36
+//************************************************ ACTION:Shift to State:36
+Reading a token: Next token is token FLOAT ()
+Shifting token FLOAT ()
+//************************************************ got the float in xpos:float;
+Entering state 66
+//************************************************ ACTION:Shift to State:66
+Reducing stack by rule 16 (line 92):
+//************************************************ ACTION:Reducing by type---->FLOAT
+   $1 = token FLOAT ()
+-> $$ = nterm type ()
+Stack now 0 1 3 8 33 64 102 9 36
+Entering state 70
+//************************************************ GOTO to State:70
+Reading a token: Next token is token SEMICOLON ()
+Shifting token SEMICOLON ()
+//************************************************ got the end semicolon of xpos:float;
+Entering state 104
+//************************************************ ACTION:Shift to State:104
+Reducing stack by rule 6 (line 72):
+//************************************************ ACTION:Reducing by typeList ----> varList COLON type SEMICOLON
+   $1 = nterm varList ()
+   $2 = token COLON ()
+   $3 = nterm type ()
+   $4 = token SEMICOLON ()
+-> $$ = nterm typeList ()
+//************************************************ reducing xpos:float to typeList
+Stack now 0 1 3 8 33 64 102
+Entering state 122
+//************************************************ GOTO to State:122
+Reading a token: Next token is token ID ()
+Shifting token ID ()
+//************************************************ got ypos of ypos:float;
+Entering state 33
+//************************************************ ACTION:Shift to State:33
+Reading a token: Next token is token COLON ()
+Reducing stack by rule 11 (line 82):
+//************************************************ ACTION:Reducing by sizeListO---->Epsilon
+-> $$ = nterm sizeListO ()
+Stack now 0 1 3 8 33 64 102 122 33
+Entering state 30
+//************************************************ GOTO to State:30
+Reducing stack by rule 10 (line 80):
+//************************************************ ACTION:Reducing by var---->ID sizeListO
+   $1 = token ID ()
+   $2 = nterm sizeListO ()
+-> $$ = nterm var ()
+Stack now 0 1 3 8 33 64 102 122
+Entering state 10
+//************************************************ GOTO to State:10
+Next token is token COLON ()
+Reducing stack by rule 9 (line 77):
+//************************************************ ACTION:Reducing by varList---->var
+   $1 = nterm var ()
+-> $$ = nterm varList ()
+//************************************************ var to varlist
+Stack now 0 1 3 8 33 64 102 122
+Entering state 34
+//************************************************ GOTO to State:34
+Next token is token COLON ()
+Shifting token COLON ()
+//************************************************ got : in ypos:float;
+Entering state 65
+//************************************************ ACTION:Shift to State:65
+Reading a token: Next token is token FLOAT ()
+Shifting token FLOAT ()
+//************************************************ got float in ypos:float;
+Entering state 66
+//************************************************ ACTION:Shift to State:66
+Reducing stack by rule 16 (line 92):
+//************************************************ ACTION:Reducing by type---->FLOAT
+   $1 = token FLOAT ()
+-> $$ = nterm type ()
+//************************************************ float is reduced to type
+Stack now 0 1 3 8 33 64 102 122 34 65
+Entering state 103
+//************************************************ GOTO to State:103
+Reading a token: Next token is token SEMICOLON ()
+Shifting token SEMICOLON ()
+//************************************************ got the end ; of ypos:float;
+Entering state 123
+//************************************************ ACTION:Shift to State:123
+Reducing stack by rule 5 (line 71):
+//************************************************ ACTION:Reducing by typeList ---->	typeList varList COLON type SEMICOLON
+   $1 = nterm typeList ()
+   $2 = nterm varList ()
+   $3 = token COLON ()
+   $4 = nterm type ()
+   $5 = token SEMICOLON ()
+-> $$ = nterm typeList ()
+//************************************************ xpos:float;ypost:float; is reduced to typelist 
+Stack now 0 1 3 8 33 64 102
+Entering state 122
+//************************************************ GOTO to State:122
+Reading a token: Next token is token END ()
+Shifting token END ()
+Entering state 131
+//************************************************ ACTION:Shift to State:131
+Reducing stack by rule 19 (line 97):
+//************************************************ ACTION:Reducing by typeDef---->ID ASSIGN PRODUCT typeList END
+   $1 = token ID ()
+   $2 = token ASSIGN ()
+   $3 = token PRODUCT ()
+   $4 = nterm typeList ()
+   $5 = token END ()
+-> $$ = nterm typeDef ()
+Stack now 0 1 3 8
+Entering state 35
+//************************************************ GOTO to State:35
+//************************************************ 
+                                                   point := product
+                                                   xpos:float;
+                                                   ypos:float;
+
+                                                   is reduced to typeDef 
+Reducing stack by rule 7 (line 73):
+//************************************************ ACTION:Reducing by typeList ----> typeList typeDe
+   $1 = nterm typeList ()
+   $2 = nterm typeDef ()
+-> $$ = nterm typeList ()
+//************************************************ previous typelist and the new typedef are reduced to a single typeList
+Stack now 0 1 3
+Entering state 8
+//************************************************ GOTO to State:8
+Reading a token: Next token is token END ()
+Shifting token END ()
+Entering state 32
+//************************************************ ACTION:Shift to State:32
+Reducing stack by rule 4 (line 69):
+//************************************************ ACTION:Reducing by decl---->DEF typeList END
+   $1 = token DEF ()
+   $2 = nterm typeList ()
+   $3 = token END ()
+-> $$ = nterm decl ()
+//************************************************ the decl part is over. as the whole declaration part is parsed
+                           ie def // Definitions
+                              a:int;
+                              b:int;
+                              sum:float;
+                              point := product
+                                 xpos:float;
+                                 ypos:float;
+                              end
+                           end
+                           is parsed to decl
+Stack now 0 1
+Entering state 5
+//************************************************ GOTO to State:5
+Reading a token: Next token is token ID ()
+Reducing stack by rule 2 (line 64):
+//************************************************ ACTION:Reducing by declList---->Epsilon
+-> $$ = nterm declList ()
+Stack now 0 1 5
+Entering state 28
+//************************************************ GOTO to State:28
+Reducing stack by rule 3 (line 66):
+//************************************************ ACTION:Reducing by declList---->decl declList
+   $1 = nterm decl ()
+   $2 = nterm declList ()
+-> $$ = nterm declList ()
+Stack now 0 1
+Entering state 4
+//************************************************ GOTO to State:4
+//************************************************ decl is parsed to declList
+
+//************************************************ now the stmlListO is going to be created ,,, i e the rest of the program
+                                                   upto the very last end 
+Next token is token ID ()
+Shifting token ID ()
+//************************************************ got a in a:=1;
+Entering state 16
+//************************************************ ACTION:Shift to State:16
+Reading a token: Next token is token ASSIGN ()
+Reducing stack by rule 43 (line 146):
+//************************************************ ACTION:Reducing by indexListO---->Epsilon
+-> $$ = nterm indexListO ()
+Stack now 0 1 4 16
+Entering state 52
+//************************************************ GOTO to State:52
+Reducing stack by rule 42 (line 144):
+//************************************************ ACTION:Reducing by id---->ID indexListO
+   $1 = token ID ()
+   $2 = nterm indexListO ()
+-> $$ = nterm id ()
+//************************************************ reduced ID to id
+Stack now 0 1 4
+Entering state 27
+//************************************************ GOTO to State:27
+Next token is token ASSIGN ()
+Reducing stack by rule 31 (line 117):
+//************************************************ ACTION:Reducing by dotId---->id
+   $1 = nterm id ()
+-> $$ = nterm dotId ()
+//************************************************ reduce id to dotid
+Stack now 0 1 4
+Entering state 21
+//************************************************ GOTO to State:21
+Next token is token ASSIGN ()
+Shifting token ASSIGN ()
+//************************************************ get thr := in a:=1;
+Entering state 57
+//************************************************ ACTION:Shift to State:57
+Reading a token: Next token is token ID ()
+Shifting token ID ()
+//************************************************ got the id='1'
+Entering state 16
+//************************************************ ACTION:Shift to State:16
+Reading a token: Next token is token SEMICOLON ()
+//************************************************ got the end of the line a:=1;
+Reducing stack by rule 43 (line 146):
+//************************************************ ACTION:Reducing by indexListO---->Epsilon
+-> $$ = nterm indexListO ()
+Stack now 0 1 4 21 57 16
+Entering state 52
+//************************************************ GOTO to State:52
+Reducing stack by rule 42 (line 144):
+//************************************************ ACTION:Reducing by id---->ID indexListO
+   $1 = token ID ()
+   $2 = nterm indexListO ()
+-> $$ = nterm id ()
+//************************************************ '1' is reduced to id
+Stack now 0 1 4 21 57
+Entering state 42
+//************************************************ GOTO to State:42
+Reducing stack by rule 65 (line 177):
+//************************************************ ACTION:Reducing by exp---->id
+   $1 = nterm id ()
+-> $$ = nterm exp ()
+//************************************************ id is reduced to exp
+Stack now 0 1 4 21 57
+Entering state 98
+//************************************************ GOTO to State:98
+Next token is token SEMICOLON ()
+Reducing stack by rule 30 (line 114):
+//************************************************ ACTION:Reducing by assignmentStmt---->dotId ASSIGN exp
+   $1 = nterm dotId ()
+   $2 = token ASSIGN ()
+   $3 = nterm exp ()
+-> $$ = nterm assignmentStmt ()
+//************************************************ a:=1 is reduced to an assignmentStmt
+Stack now 0 1 4
+Entering state 20
+//************************************************ GOTO to State:20
+Next token is token SEMICOLON ()
+Shifting token SEMICOLON ()
+//************************************************ ; at the end of a:=1 is shifted
+Entering state 56
+//************************************************ ACTION:Shift to State:56
+Reducing stack by rule 24 (line 106):
+//************************************************ ACTION:Reducing by stmt ---->	assignmentStmt SEMICOLON
+   $1 = nterm assignmentStmt ()
+   $2 = token SEMICOLON ()
+-> $$ = nterm stmt ()
+Stack now 0 1 4
+//************************************************ whole a:=1 is reduced to stmt
+Entering state 19
+//************************************************ GOTO to State:19
+Reducing stack by rule 23 (line 104):
+//************************************************ ACTION:Reducing by stmtList ---->stm
+   $1 = nterm stmt ()
+-> $$ = nterm stmtList ()
+//************************************************ stmt is converted to stmtList
+Stack now 0 1 4
+Entering state 18
+//************************************************ GOTO to State:18
+//************************************************ beginning the next line sum:=1.0;
+Reading a token: Next token is token ID ()
+Shifting token ID ()
+Entering state 16
+//************************************************ ACTION:Shift to State:16
+Reading a token: Next token is token ASSIGN ()
+Reducing stack by rule 43 (line 146):
+//************************************************ ACTION:Reducing by indexListO---->Epsilon
+-> $$ = nterm indexListO ()
+Stack now 0 1 4 18 16
+Entering state 52
+//************************************************ GOTO to State:52
+Reducing stack by rule 42 (line 144):
+//************************************************ ACTION:Reducing by id---->ID indexListO
+   $1 = token ID ()
+   $2 = nterm indexListO ()
+-> $$ = nterm id ()
+Stack now 0 1 4 18
+Entering state 27
+//************************************************ GOTO to State:27
+Next token is token ASSIGN ()
+Reducing stack by rule 31 (line 117):
+//************************************************ ACTION:Reducing by dotId---->id
+   $1 = nterm id ()
+-> $$ = nterm dotId ()
+Stack now 0 1 4 18
+Entering state 21
+//************************************************ GOTO to State:21
+//************************************************ sum is reduced to dotId
+Next token is token ASSIGN ()
+Shifting token ASSIGN ()
+Entering state 57
+//************************************************ ACTION:Shift to State:57
+Reading a token: Next token is token FLOAT_CONST ()
+Shifting token FLOAT_CONST ()
+//************************************************ we got 1.0
+Entering state 41
+//************************************************ ACTION:Shift to State:41
+Reducing stack by rule 68 (line 180):
+//************************************************ ACTION:Reducing by exp---->FLOAT_CONST
+   $1 = token FLOAT_CONST ()
+-> $$ = nterm exp ()
+Stack now 0 1 4 18 21 57
+//************************************************ redufing 1.0 to exp
+Entering state 98
+//************************************************ GOTO to State:98
+Reading a token: Next token is token SEMICOLON ()
+Reducing stack by rule 30 (line 114):
+//************************************************ ACTION:Reducing by assignmentStmt---->dotId ASSIGN exp
+   $1 = nterm dotId ()
+   $2 = token ASSIGN ()
+   $3 = nterm exp ()
+-> $$ = nterm assignmentStmt ()
+//************************************************ reduced it to assignmentStmt
+Stack now 0 1 4 18
+Entering state 20
+//************************************************ GOTO to State:20
+Next token is token SEMICOLON ()
+Shifting token SEMICOLON ()
+//************************************************ got the ; of sum:=1.0;
+Entering state 56
+//************************************************ ACTION:Shift to State:56
+Reducing stack by rule 24 (line 106):
+//************************************************ ACTION:Reducing by stmt ---->	assignmentStmt SEMICOLON
+   $1 = nterm assignmentStmt ()
+   $2 = token SEMICOLON ()
+-> $$ = nterm stmt ()
+//************************************************ reduced it to stmt
+Stack now 0 1 4 18
+Entering state 55
+//************************************************ GOTO to State:55
+Reducing stack by rule 22 (line 103):
+//************************************************ ACTION:Reducing by stmtList ---->	stmtList stmt
+   $1 = nterm stmtList ()
+   $2 = nterm stmt ()
+-> $$ = nterm stmtList ()
+//************************************************ reducing all stmt lines to stmtList
+//************************************************ preparing for point.xpos:=2.331
+Stack now 0 1 4
+Entering state 18
+//************************************************ GOTO to State:18
+Reading a token: Next token is token ID ()
+Shifting token ID ()
+//************************************************ got point
+Entering state 16
+//************************************************ ACTION:Shift to State:16
+Reading a token: Next token is token DOT ()
+Reducing stack by rule 43 (line 146):
+//************************************************ ACTION:Reducing by indexListO---->Epsilon
+-> $$ = nterm indexListO ()
+Stack now 0 1 4 18 16
+Entering state 52
+//************************************************ GOTO to State:52
+Reducing stack by rule 42 (line 144):
+//************************************************ ACTION:Reducing by id---->ID indexListO
+   $1 = token ID ()
+   $2 = nterm indexListO ()
+-> $$ = nterm id ()
+//************************************************ point to id
+Stack now 0 1 4 18
+Entering state 27
+//************************************************ GOTO to State:27
+Next token is token DOT ()
+Shifting token DOT ()
+//************************************************ got .
+Entering state 61
+//************************************************ ACTION:Shift to State:61
+Reading a token: Next token is token ID ()
+Shifting token ID ()
+//************************************************ got xpos
+Entering state 16
+//************************************************ ACTION:Shift to State:16
+Reading a token: Next token is token ASSIGN ()
+Reducing stack by rule 43 (line 146):
+//************************************************ ACTION:Reducing by indexListO---->Epsilon
+-> $$ = nterm indexListO ()
+Stack now 0 1 4 18 27 61 16
+Entering state 52
+//************************************************ GOTO to State:52
+Reducing stack by rule 42 (line 144):
+//************************************************ ACTION:Reducing by id---->ID indexListO
+   $1 = token ID ()
+   $2 = nterm indexListO ()
+-> $$ = nterm id ()
+//************************************************ xpos to id
+Stack now 0 1 4 18 27 61
+Entering state 27
+//************************************************ GOTO to State:27
+Next token is token ASSIGN ()
+Reducing stack by rule 31 (line 117):
+//************************************************ ACTION:Reducing by dotId---->id
+   $1 = nterm id ()
+-> $$ = nterm dotId ()
+//************************************************ xpos to dotId
+Stack now 0 1 4 18 27 61
+Entering state 99
+//************************************************ GOTO to State:99
+Reducing stack by rule 32 (line 118):
+//************************************************ ACTION:Reducing by dotId---->id DOT dotId
+   $1 = nterm id ()
+   $2 = token DOT ()
+   $3 = nterm dotId ()
+-> $$ = nterm dotId ()
+//************************************************ point.xpos to dotId
+Stack now 0 1 4 18
+Entering state 21
+//************************************************ GOTO to State:21
+Next token is token ASSIGN ()
+Shifting token ASSIGN ()
+//************************************************ got the :=
+Entering state 57
+//************************************************ ACTION:Shift to State:57
+Reading a token: Next token is token FLOAT_CONST ()
+Shifting token FLOAT_CONST ()
+Entering state 41
+//************************************************ ACTION:Shift to State:41
+Reducing stack by rule 68 (line 180):
+//************************************************ ACTION:Reducing by exp---->FLOAT_CONST
+   $1 = token FLOAT_CONST ()
+-> $$ = nterm exp ()
+//************************************************ getting the float 2.331 and converting it to exp
+Stack now 0 1 4 18 21 57
+Entering state 98
+//************************************************ GOTO to State:98
+Reading a token: Next token is token SEMICOLON ()
+Reducing stack by rule 30 (line 114):
+//************************************************ ACTION:Reducing by assignmentStmt---->dotId ASSIGN exp
+   $1 = nterm dotId ()
+   $2 = token ASSIGN ()
+   $3 = nterm exp ()
+-> $$ = nterm assignmentStmt ()
+//************************************************ reduce the line point.xpos:=2.331 to assignmentstmt
+Stack now 0 1 4 18
+Entering state 20
+//************************************************ GOTO to State:20
+Next token is token SEMICOLON ()
+Shifting token SEMICOLON ()
+Entering state 56
+//************************************************ ACTION:Shift to State:56
+Reducing stack by rule 24 (line 106):
+//************************************************ ACTION:Reducing by stmt ---->	assignmentStmt SEMICOLON
+   $1 = nterm assignmentStmt ()
+   $2 = token SEMICOLON ()
+-> $$ = nterm stmt ()
+//************************************************ reducing assignmentstmt to stmt
+Stack now 0 1 4 18
+Entering state 55
+//************************************************ GOTO to State:55
+Reducing stack by rule 22 (line 103):
+//************************************************ ACTION:Reducing by stmtList ---->	stmtList stmt
+   $1 = nterm stmtList ()
+   $2 = nterm stmt ()
+-> $$ = nterm stmtList ()
+Stack now 0 1 4
+//************************************************ reduce all statement upto now to stmtList
+//************************************************ going to parse point.ypos=sum+a;
+Entering state 18
+//************************************************ GOTO to State:18
+Reading a token: Next token is token ID ()
+Shifting token ID ()
+Entering state 16
+//************************************************ ACTION:Shift to State:16
+//************************************************ got point
+Reading a token: Next token is token DOT ()
+Reducing stack by rule 43 (line 146):
+//************************************************ ACTION:Reducing by indexListO---->Epsilon
+-> $$ = nterm indexListO ()
+Stack now 0 1 4 18 16
+Entering state 52
+//************************************************ GOTO to State:52
+Reducing stack by rule 42 (line 144):
+//************************************************ ACTION:Reducing by id---->ID indexListO
+   $1 = token ID ()
+   $2 = nterm indexListO ()
+-> $$ = nterm id ()
+//************************************************ change point to id
+Stack now 0 1 4 18
+Entering state 27
+//************************************************ GOTO to State:27
+Next token is token DOT ()
+Shifting token DOT ()
+//************************************************ got the . in point.ypos
+Entering state 61
+//************************************************ ACTION:Shift to State:61
+Reading a token: Next token is token ID ()
+Shifting token ID ()
+//************************************************ got the ypos
+Entering state 16
+//************************************************ ACTION:Shift to State:16
+Reading a token: Next token is token ASSIGN ()
+Reducing stack by rule 43 (line 146):
+//************************************************ ACTION:Reducing by indexListO---->Epsilon
+-> $$ = nterm indexListO ()
+Stack now 0 1 4 18 27 61 16
+Entering state 52
+//************************************************ GOTO to State:52
+Reducing stack by rule 42 (line 144):
+//************************************************ ACTION:Reducing by id---->ID indexListO
+   $1 = token ID ()
+   $2 = nterm indexListO ()
+-> $$ = nterm id ()
+Stack now 0 1 4 18 27 61
+Entering state 27
+//************************************************ GOTO to State:27
+//************************************************ got ypos to id
+Next token is token ASSIGN ()
+Reducing stack by rule 31 (line 117):
+//************************************************ ACTION:Reducing by dotId---->id
+   $1 = nterm id ()
+-> $$ = nterm dotId ()
+Stack now 0 1 4 18 27 61
+Entering state 99
+//************************************************ GOTO to State:99
+//************************************************ ypos to dotId
+Reducing stack by rule 32 (line 118):
+//************************************************ ACTION:Reducing by dotId---->id DOT dotId
+   $1 = nterm id ()
+   $2 = token DOT ()
+   $3 = nterm dotId ()
+-> $$ = nterm dotId ()
+Stack now 0 1 4 18
+Entering state 21
+//************************************************ GOTO to State:21
+//************************************************ point.ypos to dotId
+Next token is token ASSIGN ()
+Shifting token ASSIGN ()
+Entering state 57
+//************************************************ ACTION:Shift to State:57
+//************************************************ got the :=
+Reading a token: Next token is token ID ()
+Shifting token ID ()
+//************************************************ got sum
+Entering state 16
+//************************************************ ACTION:Shift to State:16
+Reading a token: Next token is token PLUS ()
+Reducing stack by rule 43 (line 146):
+//************************************************ ACTION:Reducing by indexListO---->Epsilon
+-> $$ = nterm indexListO ()
+Stack now 0 1 4 18 21 57 16
+Entering state 52
+//************************************************ GOTO to State:52
+Reducing stack by rule 42 (line 144):
+//************************************************ ACTION:Reducing by id---->ID indexListO
+   $1 = token ID ()
+   $2 = nterm indexListO ()
+-> $$ = nterm id ()
+//************************************************ sum to id
+Stack now 0 1 4 18 21 57
+Entering state 42
+//************************************************ GOTO to State:42
+Reducing stack by rule 65 (line 177):
+//************************************************ ACTION:Reducing by exp---->id
+   $1 = nterm id ()
+-> $$ = nterm exp ()
+//************************************************ sum to exp
+Stack now 0 1 4 18 21 57
+Entering state 98
+//************************************************ GOTO to State:98
+Next token is token PLUS ()
+Shifting token PLUS ()
+Entering state 89
+//************************************************ ACTION:Shift to State:89
+//************************************************ got + in sum+a
+Reading a token: Next token is token ID ()
+Shifting token ID ()
+Entering state 16
+//************************************************ ACTION:Shift to State:16
+//************************************************ got a
+Reading a token: Next token is token SEMICOLON ()
+Reducing stack by rule 43 (line 146):
+//************************************************ ACTION:Reducing by indexListO---->Epsilon
+-> $$ = nterm indexListO ()
+Stack now 0 1 4 18 21 57 98 89 16
+Entering state 52
+//************************************************ GOTO to State:52
+Reducing stack by rule 42 (line 144):
+//************************************************ ACTION:Reducing by id---->ID indexListO
+   $1 = token ID ()
+   $2 = nterm indexListO ()
+-> $$ = nterm id ()
+//************************************************ a to id
+Stack now 0 1 4 18 21 57 98 89
+Entering state 42
+//************************************************ GOTO to State:42
+Reducing stack by rule 65 (line 177):
+//************************************************ ACTION:Reducing by exp---->id
+   $1 = nterm id ()
+-> $$ = nterm exp ()
+//************************************************ a to exp
+Stack now 0 1 4 18 21 57 98 89
+Entering state 115
+//************************************************ GOTO to State:115
+Next token is token SEMICOLON ()
+Reducing stack by rule 58 (line 170):
+//************************************************ ACTION:Reducing by exp---->exp PLUS exp
+   $1 = nterm exp ()
+   $2 = token PLUS ()
+   $3 = nterm exp ()
+-> $$ = nterm exp ()
+Stack now 0 1 4 18 21 57
+Entering state 98
+//************************************************ GOTO to State:98
+//************************************************ sum+a to exp
+Next token is token SEMICOLON ()
+Reducing stack by rule 30 (line 114):
+//************************************************ ACTION:Reducing by assignmentStmt---->dotId ASSIGN exp
+   $1 = nterm dotId ()
+   $2 = token ASSIGN ()
+   $3 = nterm exp ()
+-> $$ = nterm assignmentStmt ()
+//************************************************ point.ypos:=sum+a to assignmentstmt
+Stack now 0 1 4 18
+Entering state 20
+//************************************************ GOTO to State:20
+Next token is token SEMICOLON ()
+Shifting token SEMICOLON ()
+Entering state 56
+//************************************************ ACTION:Shift to State:56
+Reducing stack by rule 24 (line 106):
+//************************************************ ACTION:Reducing by stmt ---->	assignmentStmt SEMICOLON
+   $1 = nterm assignmentStmt ()
+   $2 = token SEMICOLON ()
+-> $$ = nterm stmt ()
+//************************************************ assignmentstmt; to ie point.ypos:=sum+a to stmt
+Stack now 0 1 4 18
+Entering state 55
+//************************************************ GOTO to State:55
+Reducing stack by rule 22 (line 103):
+//************************************************ ACTION:Reducing by stmtList ---->	stmtList stmt
+   $1 = nterm stmtList ()
+   $2 = nterm stmt ()
+-> $$ = nterm stmtList ()
+Stack now 0 1 4
+Entering state 18
+//************************************************ GOTO to State:18
+//************************************************ all statement upto now to stmtList
+//************************************************ going to parse read %d b;
+Reading a token: Next token is token READ ()
+Shifting token READ ()
+Entering state 13
+//************************************************ ACTION:Shift to State:13
+//************************************************ got read
+Reading a token: Next token is token FORMAT ()
+Shifting token FORMAT ()
+Entering state 46
+//************************************************ ACTION:Shift to State:46
+//************************************************ got %d as format
+Reading a token: Next token is token ID ()
+Shifting token ID ()
+Entering state 16
+//************************************************ ACTION:Shift to State:16
+//************************************************ got b
+Reading a token: Next token is token SEMICOLON ()
+Reducing stack by rule 43 (line 146):
+//************************************************ ACTION:Reducing by indexListO---->Epsilon
+-> $$ = nterm indexListO ()
+Stack now 0 1 4 18 13 46 16
+Entering state 52
+//************************************************ GOTO to State:52
+Reducing stack by rule 42 (line 144):
+//************************************************ ACTION:Reducing by id---->ID indexListO
+   $1 = token ID ()
+   $2 = nterm indexListO ()
+-> $$ = nterm id ()
+//************************************************ b to id
+Stack now 0 1 4 18 13 46
+Entering state 42
+//************************************************ GOTO to State:42
+Reducing stack by rule 65 (line 177):
+//************************************************ ACTION:Reducing by exp---->id
+   $1 = nterm id ()
+-> $$ = nterm exp ()
+Stack now 0 1 4 18 13 46
+Entering state 93
+//************************************************ GOTO to State:93
+//************************************************ b to exp
+Next token is token SEMICOLON ()
+Reducing stack by rule 33 (line 121):
+//************************************************ ACTION:Reducing by readStmt---->READ FORMAT exp
+   $1 = token READ ()
+   $2 = token FORMAT ()
+   $3 = nterm exp ()
+-> $$ = nterm readStmt ()
+//************************************************ read %d b to readStmt
+Stack now 0 1 4 18
+Entering state 22
+//************************************************ GOTO to State:22
+Next token is token SEMICOLON ()
+Shifting token SEMICOLON ()
+Entering state 58
+//************************************************ ACTION:Shift to State:58
+//************************************************ getting ;
+Reducing stack by rule 25 (line 107):
+//************************************************ ACTION:Reducing by stmt ---->	readStmt SEMICOLON
+   $1 = nterm readStmt ()
+   $2 = token SEMICOLON ()
+-> $$ = nterm stmt ()
+Stack now 0 1 4 18
+Entering state 55
+//************************************************ GOTO to State:55
+//************************************************ read %d b; to stmt
+Reducing stack by rule 22 (line 103):
+//************************************************ ACTION:Reducing by stmtList ---->	stmtList stmt
+   $1 = nterm stmtList ()
+   $2 = nterm stmt ()
+-> $$ = nterm stmtList ()
+Stack now 0 1 4
+Entering state 18
+//************************************************ GOTO to State:18
+//************************************************ all statements upto now to stmtList
+//************************************************ if b=0:
+Reading a token: Next token is token IF ()
+Shifting token IF ()
+Entering state 11
+//************************************************ ACTION:Shift to State:11
+//************************************************ got if
+Reading a token: Next token is token ID ()
+Shifting token ID ()
+Entering state 16
+//************************************************ ACTION:Shift to State:16
+//************************************************ got b
+Reading a token: Next token is token EQ ()
+Reducing stack by rule 43 (line 146):
+//************************************************ ACTION:Reducing by indexListO---->Epsilon
+-> $$ = nterm indexListO ()
+Stack now 0 1 4 18 11 16
+Entering state 52
+//************************************************ GOTO to State:52
+Reducing stack by rule 42 (line 144):
+//************************************************ ACTION:Reducing by id---->ID indexListO
+   $1 = token ID ()
+   $2 = nterm indexListO ()
+-> $$ = nterm id ()
+//************************************************ b to id
+Stack now 0 1 4 18 11
+Entering state 42
+//************************************************ GOTO to State:42
+Reducing stack by rule 65 (line 177):
+//************************************************ ACTION:Reducing by exp---->id
+   $1 = nterm id ()
+-> $$ = nterm exp ()
+//************************************************ b to expr
+Stack now 0 1 4 18 11
+Entering state 44
+//************************************************ GOTO to State:44
+Next token is token EQ ()
+Shifting token EQ ()
+//************************************************ got =
+Entering state 80
+//************************************************ ACTION:Shift to State:80
+Reducing stack by rule 52 (line 162):
+//************************************************ ACTION:Reducing by relOP---->EQ
+   $1 = token EQ ()
+-> $$ = nterm relOP ()
+//************************************************ = to relOP
+Stack now 0 1 4 18 11 44
+Entering state 91
+//************************************************ GOTO to State:91
+Reading a token: Next token is token ID ()
+Shifting token ID ()
+Entering state 16
+//************************************************ ACTION:Shift to State:16
+//************************************************ got 0
+Reading a token: Next token is token COLON ()
+Reducing stack by rule 43 (line 146):
+//************************************************ ACTION:Reducing by indexListO---->Epsilon
+-> $$ = nterm indexListO ()
+Stack now 0 1 4 18 11 44 91 16
+Entering state 52
+//************************************************ GOTO to State:52
+Reducing stack by rule 42 (line 144):
+//************************************************ ACTION:Reducing by id---->ID indexListO
+   $1 = token ID ()
+   $2 = nterm indexListO ()
+-> $$ = nterm id ()
+//************************************************ 0 to id
+Stack now 0 1 4 18 11 44 91
+Entering state 42
+//************************************************ GOTO to State:42
+Reducing stack by rule 65 (line 177):
+//************************************************ ACTION:Reducing by exp---->id
+   $1 = nterm id ()
+-> $$ = nterm exp ()
+Stack now 0 1 4 18 11 44 91
+Entering state 117
+//************************************************ GOTO to State:117
+//************************************************ id 0 to exp
+Next token is token COLON ()
+Reducing stack by rule 51 (line 159):
+//************************************************ ACTION:Reducing by bExp---->exp relOP exp
+   $1 = nterm exp ()
+   $2 = nterm relOP ()
+   $3 = nterm exp ()
+-> $$ = nterm bExp ()
+Stack now 0 1 4 18 11
+Entering state 43
+//************************************************ GOTO to State:43
+//************************************************ b=0 to bExp
+Next token is token COLON ()
+Shifting token COLON ()
+Entering state 77
+//************************************************ ACTION:Shift to State:77
+//************************************************ the : of if b=0:
+//************************************************ gettign the stmtList of the if
+//************************************************ to get print %f point.xpos;
+Reading a token: Next token is token PRINT ()
+Shifting token PRINT ()
+Entering state 12
+//************************************************ ACTION:Shift to State:12
+//************************************************ got print
+Reading a token: Next token is token FORMAT ()
+Shifting token FORMAT ()
+Entering state 45
+//************************************************ ACTION:Shift to State:45
+//************************************************ got %f
+Reading a token: Next token is token ID ()
+Shifting token ID ()
+Entering state 16
+//************************************************ ACTION:Shift to State:16
+//************************************************ got ID = point
+Reading a token: Next token is token DOT ()
+Reducing stack by rule 43 (line 146):
+//************************************************ ACTION:Reducing by indexListO---->Epsilon
+-> $$ = nterm indexListO ()
+Stack now 0 1 4 18 11 43 77 12 45 16
+Entering state 52
+//************************************************ GOTO to State:52
+Reducing stack by rule 42 (line 144):
+//************************************************ ACTION:Reducing by id---->ID indexListO
+   $1 = token ID ()
+   $2 = nterm indexListO ()
+-> $$ = nterm id ()
+//************************************************ point to id
+Stack now 0 1 4 18 11 43 77 12 45
+Entering state 42
+//************************************************ GOTO to State:42
+Reducing stack by rule 65 (line 177):
+//************************************************ ACTION:Reducing by exp---->id
+   $1 = nterm id ()
+-> $$ = nterm exp ()
+//************************************************ point to exp
+Stack now 0 1 4 18 11 43 77 12 45
+Entering state 92
+//************************************************ GOTO to State:92
+Next token is token DOT ()
+Shifting token DOT ()
+Entering state 90
+//************************************************ ACTION:Shift to State:90
+//************************************************ got . point.xpos
+Reading a token: Next token is token ID ()
+Shifting token ID ()
+Entering state 16
+//************************************************ ACTION:Shift to State:16
+//************************************************ got xpos
+Reading a token: Next token is token SEMICOLON ()
+Reducing stack by rule 43 (line 146):
+//************************************************ ACTION:Reducing by indexListO---->Epsilon
+-> $$ = nterm indexListO ()
+Stack now 0 1 4 18 11 43 77 12 45 92 90 16
+Entering state 52
+//************************************************ GOTO to State:52
+Reducing stack by rule 42 (line 144):
+//************************************************ ACTION:Reducing by id---->ID indexListO
+   $1 = token ID ()
+   $2 = nterm indexListO ()
+-> $$ = nterm id ()
+//************************************************ xpos to id
+Stack now 0 1 4 18 11 43 77 12 45 92 90
+Entering state 42
+//************************************************ GOTO to State:42
+Reducing stack by rule 65 (line 177):
+//************************************************ ACTION:Reducing by exp---->id
+   $1 = nterm id ()
+-> $$ = nterm exp ()
+//************************************************ xpos to exp
+Stack now 0 1 4 18 11 43 77 12 45 92 90
+Entering state 116
+//************************************************ GOTO to State:116
+Next token is token SEMICOLON ()
+Reducing stack by rule 63 (line 175):
+//************************************************ ACTION:Reducing by exp---->exp DOT exp
+   $1 = nterm exp ()
+   $2 = token DOT ()
+   $3 = nterm exp ()
+-> $$ = nterm exp ()
+Stack now 0 1 4 18 11 43 77 12 45
+Entering state 92
+//************************************************ GOTO to State:92
+//************************************************ make point.xpos to exp
+Next token is token SEMICOLON ()
+Reducing stack by rule 34 (line 124):
+//************************************************ ACTION:Reducing by printStmt---->PRINT FORMAT exp
+   $1 = token PRINT ()
+   $2 = token FORMAT ()
+   $3 = nterm exp ()
+-> $$ = nterm printStmt ()
+//************************************************ print %f point.xpos; to printStmt
+Stack now 0 1 4 18 11 43 77
+Entering state 23
+//************************************************ GOTO to State:23
+Next token is token SEMICOLON ()
+Shifting token SEMICOLON ()
+Entering state 59
+//************************************************ ACTION:Shift to State:59
+Reducing stack by rule 26 (line 108):
+//************************************************ ACTION:Reducing by stmt ---->	printStmt SEMICOLON
+   $1 = nterm printStmt ()
+   $2 = token SEMICOLON ()
+-> $$ = nterm stmt ()
+//************************************************ reduce the line to stmt
+Stack now 0 1 4 18 11 43 77
+Entering state 19
+//************************************************ GOTO to State:19
+Reducing stack by rule 23 (line 104):
+//************************************************ ACTION:Reducing by stmtList ---->stm
+   $1 = nterm stmt ()
+-> $$ = nterm stmtList ()
+Stack now 0 1 4 18 11 43 77
+Entering state 109
+//************************************************ GOTO to State:109
+//************************************************ convert line to stmtList
+//************************************************ the ELSE part of the ifstmt
+Reading a token: Next token is token ELSE ()
+Shifting token ELSE ()
+Entering state 127
+//************************************************ ACTION:Shift to State:127
+//************************************************ got else
+Reading a token: Next token is token PRINT ()
+Shifting token PRINT ()
+Entering state 12
+//************************************************ ACTION:Shift to State:12
+//************************************************ got print
+Reading a token: Next token is token FORMAT ()
+Shifting token FORMAT ()
+Entering state 45
+//************************************************ ACTION:Shift to State:45
+//************************************************ got fromat = %f
+Reading a token: Next token is token ID ()
+Shifting token ID ()
+Entering state 16
+//************************************************ ACTION:Shift to State:16
+//************************************************ got ID = point
+Reading a token: Next token is token DOT ()
+Reducing stack by rule 43 (line 146):
+//************************************************ ACTION:Reducing by indexListO---->Epsilon
+-> $$ = nterm indexListO ()
+Stack now 0 1 4 18 11 43 77 109 127 12 45 16
+Entering state 52
+//************************************************ GOTO to State:52
+Reducing stack by rule 42 (line 144):
+//************************************************ ACTION:Reducing by id---->ID indexListO
+   $1 = token ID ()
+   $2 = nterm indexListO ()
+-> $$ = nterm id ()
+//************************************************ point to id
+Stack now 0 1 4 18 11 43 77 109 127 12 45
+Entering state 42
+//************************************************ GOTO to State:42
+Reducing stack by rule 65 (line 177):
+//************************************************ ACTION:Reducing by exp---->id
+   $1 = nterm id ()
+-> $$ = nterm exp ()
+//************************************************ point to exp
+Stack now 0 1 4 18 11 43 77 109 127 12 45
+Entering state 92
+//************************************************ GOTO to State:92
+Next token is token DOT ()
+Shifting token DOT ()
+Entering state 90
+//************************************************ ACTION:Shift to State:90
+//************************************************ got the . is point.ypos
+Reading a token: Next token is token ID ()
+Shifting token ID ()
+Entering state 16
+//************************************************ ACTION:Shift to State:16
+Reading a token: Next token is token SEMICOLON ()
+Reducing stack by rule 43 (line 146):
+//************************************************ ACTION:Reducing by indexListO---->Epsilon
+//************************************************ got ypos
+-> $$ = nterm indexListO ()
+Stack now 0 1 4 18 11 43 77 109 127 12 45 92 90 16
+Entering state 52
+//************************************************ GOTO to State:52
+Reducing stack by rule 42 (line 144):
+//************************************************ ACTION:Reducing by id---->ID indexListO
+   $1 = token ID ()
+   $2 = nterm indexListO ()
+-> $$ = nterm id ()
+Stack now 0 1 4 18 11 43 77 109 127 12 45 92 90
+Entering state 42
+//************************************************ GOTO to State:42
+//************************************************ ypos to id
+Reducing stack by rule 65 (line 177):
+//************************************************ ACTION:Reducing by exp---->id
+   $1 = nterm id ()
+-> $$ = nterm exp ()
+//************************************************ id to exp
+Stack now 0 1 4 18 11 43 77 109 127 12 45 92 90
+Entering state 116
+//************************************************ GOTO to State:116
+Next token is token SEMICOLON ()
+Reducing stack by rule 63 (line 175):
+//************************************************ ACTION:Reducing by exp---->exp DOT exp
+   $1 = nterm exp ()
+   $2 = token DOT ()
+   $3 = nterm exp ()
+-> $$ = nterm exp ()
+//************************************************ point.ypos to exp
+Stack now 0 1 4 18 11 43 77 109 127 12 45
+Entering state 92
+//************************************************ GOTO to State:92
+Next token is token SEMICOLON ()
+Reducing stack by rule 34 (line 124):
+//************************************************ ACTION:Reducing by printStmt---->PRINT FORMAT exp
+   $1 = token PRINT ()
+   $2 = token FORMAT ()
+   $3 = nterm exp ()
+-> $$ = nterm printStmt ()
+//************************************************ print %f point.ypos to printStmt
+Stack now 0 1 4 18 11 43 77 109 127
+Entering state 23
+//************************************************ GOTO to State:23
+Next token is token SEMICOLON ()
+Shifting token SEMICOLON ()
+Entering state 59
+//************************************************ ACTION:Shift to State:59
+Reducing stack by rule 26 (line 108):
+//************************************************ ACTION:Reducing by stmt ---->	printStmt SEMICOLON
+   $1 = nterm printStmt ()
+   $2 = token SEMICOLON ()
+-> $$ = nterm stmt ()
+//************************************************ got the whole statement with ; to stmt
+Stack now 0 1 4 18 11 43 77 109 127
+Entering state 19
+//************************************************ GOTO to State:19
+Reducing stack by rule 23 (line 104):
+//************************************************ ACTION:Reducing by stmtList ---->stm
+   $1 = nterm stmt ()
+-> $$ = nterm stmtList ()
+//************************************************ the stmt to stmtList of ELSE part
+Stack now 0 1 4 18 11 43 77 109 127
+Entering state 134
+//************************************************ GOTO to State:134
+Reading a token: Next token is token END ()
+Reducing stack by rule 37 (line 131):
+//************************************************ ACTION:Reducing by elsePart---->ELSE stmtList
+   $1 = token ELSE ()
+   $2 = nterm stmtList ()
+-> $$ = nterm elsePart ()
+//************************************************ got the elsePart
+Stack now 0 1 4 18 11 43 77 109
+Entering state 128
+//************************************************ GOTO to State:128
+Next token is token END ()
+Shifting token END ()
+Entering state 135
+//************************************************ ACTION:Shift to State:135
+//************************************************ getting the end of the if block
+Reducing stack by rule 35 (line 127):
+//************************************************ ACTION:Reducing by ifStmt---->IF bExp COLON stmtList elsePart END
+   $1 = token IF ()
+   $2 = nterm bExp ()
+   $3 = token COLON ()
+   $4 = nterm stmtList ()
+   $5 = nterm elsePart ()
+   $6 = token END ()
+-> $$ = nterm ifStmt ()
+//************************************************ making it to ifStmt
+Stack now 0 1 4 18
+Entering state 24
+//************************************************ GOTO to State:24
+Reducing stack by rule 27 (line 109):
+//************************************************ ACTION:Reducing by stmt ---->	ifStmt
+   $1 = nterm ifStmt ()
+-> $$ = nterm stmt ()
+//************************************************ making the if block to stmt
+Stack now 0 1 4 18
+Entering state 55
+//************************************************ GOTO to State:55
+Reducing stack by rule 22 (line 103):
+//************************************************ ACTION:Reducing by stmtList ---->	stmtList stmt
+   $1 = nterm stmtList ()
+   $2 = nterm stmt ()
+-> $$ = nterm stmtList ()
+Stack now 0 1 4
+Entering state 18
+//************************************************ GOTO to State:18
+//************************************************ all statement upto now to stmtList
+//************************************************ starting the while block
+Reading a token: Next token is token WHILE ()
+Shifting token WHILE ()
+Entering state 15
+//************************************************ ACTION:Shift to State:15
+//************************************************ got while
+Reading a token: Next token is token ID ()
+Shifting token ID ()
+Entering state 16
+//************************************************ ACTION:Shift to State:16
+//************************************************ got a
+Reading a token: Next token is token LT ()
+Reducing stack by rule 43 (line 146):
+//************************************************ ACTION:Reducing by indexListO---->Epsilon
+-> $$ = nterm indexListO ()
+Stack now 0 1 4 18 15 16
+Entering state 52
+//************************************************ GOTO to State:52
+Reducing stack by rule 42 (line 144):
+//************************************************ ACTION:Reducing by id---->ID indexListO
+   $1 = token ID ()
+   $2 = nterm indexListO ()
+-> $$ = nterm id ()
+//************************************************ a to id
+Stack now 0 1 4 18 15
+Entering state 42
+//************************************************ GOTO to State:42
+Reducing stack by rule 65 (line 177):
+//************************************************ ACTION:Reducing by exp---->id
+   $1 = nterm id ()
+-> $$ = nterm exp ()
+//************************************************ a to exp
+Stack now 0 1 4 18 15
+Entering state 44
+//************************************************ GOTO to State:44
+Next token is token LT ()
+Shifting token LT ()
+Entering state 84
+//************************************************ ACTION:Shift to State:84
+Reducing stack by rule 54 (line 164):
+//************************************************ ACTION:Reducing by relOP---->LT
+   $1 = token LT ()
+-> $$ = nterm relOP ()
+//************************************************ less than to relOP
+Stack now 0 1 4 18 15 44
+Entering state 91
+//************************************************ GOTO to State:91
+Reading a token: Next token is token ID ()
+Shifting token ID ()
+//************************************************ got b
+Entering state 16
+//************************************************ ACTION:Shift to State:16
+Reading a token: Next token is token COLON ()
+Reducing stack by rule 43 (line 146):
+//************************************************ ACTION:Reducing by indexListO---->Epsilon
+-> $$ = nterm indexListO ()
+Stack now 0 1 4 18 15 44 91 16
+Entering state 52
+//************************************************ GOTO to State:52
+Reducing stack by rule 42 (line 144):
+//************************************************ ACTION:Reducing by id---->ID indexListO
+   $1 = token ID ()
+   $2 = nterm indexListO ()
+-> $$ = nterm id ()
+//************************************************ b to id
+Stack now 0 1 4 18 15 44 91
+Entering state 42
+//************************************************ GOTO to State:42
+Reducing stack by rule 65 (line 177):
+//************************************************ ACTION:Reducing by exp---->id
+   $1 = nterm id ()
+-> $$ = nterm exp ()
+//************************************************ b to exp
+Stack now 0 1 4 18 15 44 91
+Entering state 117
+//************************************************ GOTO to State:117
+Next token is token COLON ()
+Reducing stack by rule 51 (line 159):
+//************************************************ ACTION:Reducing by bExp---->exp relOP exp
+   $1 = nterm exp ()
+   $2 = nterm relOP ()
+   $3 = nterm exp ()
+-> $$ = nterm bExp ()
+//************************************************  a<b to bExp
+Stack now 0 1 4 18 15
+Entering state 50
+//************************************************ GOTO to State:50
+Next token is token COLON ()
+Shifting token COLON ()
+Entering state 95
+//************************************************ ACTION:Shift to State:95
+//************************************************ getting the : of while a<b :
+Reading a token: Next token is token ID ()
+Shifting token ID ()
+Entering state 16
+//************************************************ ACTION:Shift to State:16
+//************************************************ getting a
+Reading a token: Next token is token ASSIGN ()
+Reducing stack by rule 43 (line 146):
+//************************************************ ACTION:Reducing by indexListO---->Epsilon
+-> $$ = nterm indexListO ()
+Stack now 0 1 4 18 15 50 95 16
+Entering state 52
+//************************************************ GOTO to State:52
+Reducing stack by rule 42 (line 144):
+//************************************************ ACTION:Reducing by id---->ID indexListO
+   $1 = token ID ()
+   $2 = nterm indexListO ()
+-> $$ = nterm id ()
+Stack now 0 1 4 18 15 50 95
+Entering state 27
+//************************************************ GOTO to State:27
+//************************************************ a to id
+Next token is token ASSIGN ()
+Reducing stack by rule 31 (line 117):
+//************************************************ ACTION:Reducing by dotId---->id
+   $1 = nterm id ()
+-> $$ = nterm dotId ()
+Stack now 0 1 4 18 15 50 95
+Entering state 21
+//************************************************ GOTO to State:21
+//************************************************ a to dotId
+Next token is token ASSIGN ()
+Shifting token ASSIGN ()
+Entering state 57
+//************************************************ ACTION:Shift to State:57
+//************************************************ got the := from a:=a*2;
+Reading a token: Next token is token ID ()
+Shifting token ID ()
+//************************************************ got ID = a
+Entering state 16
+//************************************************ ACTION:Shift to State:16
+Reading a token: Next token is token MULT ()
+Reducing stack by rule 43 (line 146):
+//************************************************ ACTION:Reducing by indexListO---->Epsilon
+-> $$ = nterm indexListO ()
+Stack now 0 1 4 18 15 50 95 21 57 16
+Entering state 52
+//************************************************ GOTO to State:52
+Reducing stack by rule 42 (line 144):
+//************************************************ ACTION:Reducing by id---->ID indexListO
+   $1 = token ID ()
+   $2 = nterm indexListO ()
+-> $$ = nterm id ()
+//************************************************ a to id
+Stack now 0 1 4 18 15 50 95 21 57
+Entering state 42
+//************************************************ GOTO to State:42
+Reducing stack by rule 65 (line 177):
+//************************************************ ACTION:Reducing by exp---->id
+   $1 = nterm id ()
+-> $$ = nterm exp ()
+Stack now 0 1 4 18 15 50 95 21 57
+Entering state 98
+//************************************************ GOTO to State:98
+//************************************************ a to exp
+Next token is token MULT ()
+Shifting token MULT ()
+Entering state 87
+//************************************************ ACTION:Shift to State:87
+//************************************************ got the *
+Reading a token: Next token is token ID ()
+Shifting token ID ()
+Entering state 16
+//************************************************ ACTION:Shift to State:16
+//************************************************ got ID =2
+Reading a token: Next token is token SEMICOLON ()
+Reducing stack by rule 43 (line 146):
+//************************************************ ACTION:Reducing by indexListO---->Epsilon
+-> $$ = nterm indexListO ()
+Stack now 0 1 4 18 15 50 95 21 57 98 87 16
+Entering state 52
+//************************************************ GOTO to State:52
+Reducing stack by rule 42 (line 144):
+//************************************************ ACTION:Reducing by id---->ID indexListO
+   $1 = token ID ()
+   $2 = nterm indexListO ()
+-> $$ = nterm id ()
+//************************************************ 2 to id
+Stack now 0 1 4 18 15 50 95 21 57 98 87
+Entering state 42
+//************************************************ GOTO to State:42
+Reducing stack by rule 65 (line 177):
+//************************************************ ACTION:Reducing by exp---->id
+   $1 = nterm id ()
+-> $$ = nterm exp ()
+//************************************************ 2 to id to exp
+Stack now 0 1 4 18 15 50 95 21 57 98 87
+Entering state 114
+//************************************************ GOTO to State:114
+Next token is token SEMICOLON ()
+Reducing stack by rule 60 (line 172):
+//************************************************ ACTION:Reducing by exp---->exp MULT exp
+   $1 = nterm exp ()
+   $2 = token MULT ()
+   $3 = nterm exp ()
+-> $$ = nterm exp ()
+Stack now 0 1 4 18 15 50 95 21 57
+Entering state 98
+//************************************************ GOTO to State:98
+//************************************************ a*2 to exp
+Next token is token SEMICOLON ()
+Reducing stack by rule 30 (line 114):
+//************************************************ ACTION:Reducing by assignmentStmt---->dotId ASSIGN exp
+   $1 = nterm dotId ()
+   $2 = token ASSIGN ()
+   $3 = nterm exp ()
+-> $$ = nterm assignmentStmt ()
+Stack now 0 1 4 18 15 50 95
+Entering state 20
+//************************************************ GOTO to State:20
+//************************************************ a:=a*2 to assignmentstmt
+Next token is token SEMICOLON ()
+Shifting token SEMICOLON ()
+Entering state 56
+//************************************************ ACTION:Shift to State:56
+Reducing stack by rule 24 (line 106):
+//************************************************ ACTION:Reducing by stmt ---->	assignmentStmt SEMICOLON
+   $1 = nterm assignmentStmt ()
+   $2 = token SEMICOLON ()
+-> $$ = nterm stmt ()
+Stack now 0 1 4 18 15 50 95
+Entering state 19
+//************************************************ GOTO to State:19
+//************************************************ a:=a*2; to stmt
+Reducing stack by rule 23 (line 104):
+//************************************************ ACTION:Reducing by stmtList ---->stm
+   $1 = nterm stmt ()
+-> $$ = nterm stmtList ()
+Stack now 0 1 4 18 15 50 95
+Entering state 118
+//************************************************ GOTO to State:118
+//************************************************ stmt to stmtList
+//************************************************ going to parse sum:=sum+1;
+Reading a token: Next token is token ID ()
+Shifting token ID ()
+Entering state 16
+//************************************************ ACTION:Shift to State:16
+//************************************************ got the fisrt sum
+Reading a token: Next token is token ASSIGN ()
+Reducing stack by rule 43 (line 146):
+//************************************************ ACTION:Reducing by indexListO---->Epsilon
+-> $$ = nterm indexListO ()
+Stack now 0 1 4 18 15 50 95 118 16
+Entering state 52
+//************************************************ GOTO to State:52
+Reducing stack by rule 42 (line 144):
+//************************************************ ACTION:Reducing by id---->ID indexListO
+   $1 = token ID ()
+   $2 = nterm indexListO ()
+-> $$ = nterm id ()
+Stack now 0 1 4 18 15 50 95 118
+Entering state 27
+//************************************************ GOTO to State:27
+Next token is token ASSIGN ()
+Reducing stack by rule 31 (line 117):
+//************************************************ ACTION:Reducing by dotId---->id
+   $1 = nterm id ()
+-> $$ = nterm dotId ()
+Stack now 0 1 4 18 15 50 95 118
+Entering state 21
+//************************************************ GOTO to State:21
+//************************************************ sum to dotId
+Next token is token ASSIGN ()
+Shifting token ASSIGN ()
+Entering state 57
+//************************************************ ACTION:Shift to State:57
+//************************************************ got the :=
+Reading a token: Next token is token ID ()
+Shifting token ID ()
+//************************************************ getting the next sum
+Entering state 16
+//************************************************ ACTION:Shift to State:16
+Reading a token: Next token is token PLUS ()
+Reducing stack by rule 43 (line 146):
+//************************************************ ACTION:Reducing by indexListO---->Epsilon
+-> $$ = nterm indexListO ()
+Stack now 0 1 4 18 15 50 95 118 21 57 16
+Entering state 52
+//************************************************ GOTO to State:52
+Reducing stack by rule 42 (line 144):
+//************************************************ ACTION:Reducing by id---->ID indexListO
+   $1 = token ID ()
+   $2 = nterm indexListO ()
+-> $$ = nterm id ()
+Stack now 0 1 4 18 15 50 95 118 21 57
+Entering state 42
+//************************************************ GOTO to State:42
+Reducing stack by rule 65 (line 177):
+//************************************************ ACTION:Reducing by exp---->id
+   $1 = nterm id ()
+-> $$ = nterm exp ()
+//************************************************ sum to exp
+Stack now 0 1 4 18 15 50 95 118 21 57
+Entering state 98
+//************************************************ GOTO to State:98
+Next token is token PLUS ()
+Shifting token PLUS ()
+Entering state 89
+//************************************************ ACTION:Shift to State:89
+//************************************************ got +
+Reading a token: Next token is token ID ()
+Shifting token ID ()
+Entering state 16
+//************************************************ ACTION:Shift to State:16
+//************************************************ got 1
+Reading a token: Next token is token SEMICOLON ()
+Reducing stack by rule 43 (line 146):
+//************************************************ ACTION:Reducing by indexListO---->Epsilon
+-> $$ = nterm indexListO ()
+Stack now 0 1 4 18 15 50 95 118 21 57 98 89 16
+Entering state 52
+//************************************************ GOTO to State:52
+Reducing stack by rule 42 (line 144):
+//************************************************ ACTION:Reducing by id---->ID indexListO
+   $1 = token ID ()
+   $2 = nterm indexListO ()
+-> $$ = nterm id ()
+//************************************************ 1 to id
+Stack now 0 1 4 18 15 50 95 118 21 57 98 89
+Entering state 42
+//************************************************ GOTO to State:42
+Reducing stack by rule 65 (line 177):
+//************************************************ ACTION:Reducing by exp---->id
+   $1 = nterm id ()
+-> $$ = nterm exp ()
+//************************************************ id to exp
+Stack now 0 1 4 18 15 50 95 118 21 57 98 89
+Entering state 115
+//************************************************ GOTO to State:115
+Next token is token SEMICOLON ()
+Reducing stack by rule 58 (line 170):
+//************************************************ ACTION:Reducing by exp---->exp PLUS exp
+   $1 = nterm exp ()
+   $2 = token PLUS ()
+   $3 = nterm exp ()
+-> $$ = nterm exp ()
+Stack now 0 1 4 18 15 50 95 118 21 57
+Entering state 98
+//************************************************ GOTO to State:98
+//************************************************ sum+1 to exp
+Next token is token SEMICOLON ()
+Reducing stack by rule 30 (line 114):
+//************************************************ ACTION:Reducing by assignmentStmt---->dotId ASSIGN exp
+   $1 = nterm dotId ()
+   $2 = token ASSIGN ()
+   $3 = nterm exp ()
+-> $$ = nterm assignmentStmt ()
+//************************************************ sum=sum+1 to assignmentstmt
+Stack now 0 1 4 18 15 50 95 118
+Entering state 20
+//************************************************ GOTO to State:20
+Next token is token SEMICOLON ()
+Shifting token SEMICOLON ()
+Entering state 56
+//************************************************ ACTION:Shift to State:56
+Reducing stack by rule 24 (line 106):
+//************************************************ ACTION:Reducing by stmt ---->	assignmentStmt SEMICOLON
+   $1 = nterm assignmentStmt ()
+   $2 = token SEMICOLON ()
+-> $$ = nterm stmt ()
+//************************************************ sum=sum+1; to stmt
+Stack now 0 1 4 18 15 50 95 118
+Entering state 55
+//************************************************ GOTO to State:55
+Reducing stack by rule 22 (line 103):
+//************************************************ ACTION:Reducing by stmtList ---->	stmtList stmt
+   $1 = nterm stmtList ()
+   $2 = nterm stmt ()
+-> $$ = nterm stmtList ()
+Stack now 0 1 4 18 15 50 95
+Entering state 118
+//************************************************ GOTO to State:118
+//************************************************ all statements within while to stmtList
+Reading a token: Next token is token END ()
+Shifting token END ()
+Entering state 129
+//************************************************ ACTION:Shift to State:129
+Reducing stack by rule 38 (line 134):
+//************************************************ ACTION:Reducing by whileStmt---->WHILE bExp COLON stmtList END
+   $1 = token WHILE ()
+   $2 = nterm bExp ()
+   $3 = token COLON ()
+   $4 = nterm stmtList ()
+   $5 = token END ()
+-> $$ = nterm whileStmt ()
+Stack now 0 1 4 18
+Entering state 25
+//************************************************ GOTO to State:25
+//************************************************ converting the while block to whileStmt
+Reducing stack by rule 28 (line 110):
+//************************************************ ACTION:Reducing by stmt ---->	whileStmt
+   $1 = nterm whileStmt ()
+-> $$ = nterm stmt ()
+Stack now 0 1 4 18
+Entering state 55
+//************************************************ GOTO to State:55
+//************************************************ whileStmt to stmt
+Reducing stack by rule 22 (line 103):
+//************************************************ ACTION:Reducing by stmtList ---->	stmtList stmt
+   $1 = nterm stmtList ()
+   $2 = nterm stmt ()
+-> $$ = nterm stmtList ()
+Stack now 0 1 4
+Entering state 18
+//************************************************ GOTO to State:18
+//************************************************ all stmt upto now to stmtList
+//************************************************ return sum;
+Reading a token: Next token is token RETURN ()
+Shifting token RETURN ()
+Entering state 14
+//************************************************ ACTION:Shift to State:14
+//************************************************ got return
+Reading a token: Next token is token ID ()
+Shifting token ID ()
+Entering state 16
+//************************************************ ACTION:Shift to State:16
+//************************************************ got ID = sum
+Reading a token: Next token is token SEMICOLON ()
+Reducing stack by rule 43 (line 146):
+//************************************************ ACTION:Reducing by indexListO---->Epsilon
+-> $$ = nterm indexListO ()
+Stack now 0 1 4 18 14 16
+Entering state 52
+//************************************************ GOTO to State:52
+Reducing stack by rule 42 (line 144):
+//************************************************ ACTION:Reducing by id---->ID indexListO
+   $1 = token ID ()
+   $2 = nterm indexListO ()
+-> $$ = nterm id ()
+//************************************************ sum to ID
+Stack now 0 1 4 18 14
+Entering state 42
+//************************************************ GOTO to State:42
+Reducing stack by rule 65 (line 177):
+//************************************************ ACTION:Reducing by exp---->id
+   $1 = nterm id ()
+-> $$ = nterm exp ()
+Stack now 0 1 4 18 14
+Entering state 49
+//************************************************ GOTO to State:49
+//************************************************ sum to exp
+Next token is token SEMICOLON ()
+Reducing stack by rule 41 (line 141):
+//************************************************ ACTION:Reducing by expO---->exp
+   $1 = nterm exp ()
+-> $$ = nterm expO ()
+Stack now 0 1 4 18 14
+Entering state 48
+//************************************************ GOTO to State:48
+//************************************************ exp to expO
+Reducing stack by rule 39 (line 137):
+//************************************************ ACTION:Reducing by returnStmt---->RETURN expO
+   $1 = token RETURN ()
+   $2 = nterm expO ()
+-> $$ = nterm returnStmt ()
+Stack now 0 1 4 18
+Entering state 26
+//************************************************ GOTO to State:26
+//************************************************ return sum to returnStmt
+Next token is token SEMICOLON ()
+Shifting token SEMICOLON ()
+Entering state 60
+//************************************************ ACTION:Shift to State:60
+Reducing stack by rule 29 (line 111):
+//************************************************ ACTION:Reducing by stmt ---->	returnStmt SEMICOLO
+   $1 = nterm returnStmt ()
+   $2 = token SEMICOLON ()
+-> $$ = nterm stmt ()
+Stack now 0 1 4 18
+Entering state 55
+//************************************************ GOTO to State:55
+//************************************************ return sum; to returnStmt
+Reducing stack by rule 22 (line 103):
+//************************************************ ACTION:Reducing by stmtList ---->	stmtList stmt
+   $1 = nterm stmtList ()
+   $2 = nterm stmt ()
+-> $$ = nterm stmtList ()
+Stack now 0 1 4
+Entering state 18
+//************************************************ GOTO to State:18
+//************************************************ all stmt upto now to stmtList
+Reading a token: Next token is token END ()
+//************************************************ the very last end ,,, end of prog reached
+Reducing stack by rule 21 (line 101):
+//************************************************ ACTION:Reducing by stmtListO---->stmtList
+   $1 = nterm stmtList ()
+-> $$ = nterm stmtListO ()
+Stack now 0 1 4
+Entering state 17
+//************************************************ GOTO to State:17
+//************************************************ the whole stmtList to stmtListO
+Next token is token END ()
+Shifting token END ()
+Entering state 54
+//************************************************ ACTION:Shift to State:54
+//************************************************ getting the very last END
+Reducing stack by rule 1 (line 62):
+//************************************************ ACTION:Reducing by prog---->GLOBAL declList stmtListO END
+   $1 = token GLOBAL ()
+   $2 = nterm declList ()
+   $3 = nterm stmtListO ()
+   $4 = token END ()
+-> $$ = nterm prog ()
+Stack now 0
+Entering state 2
+//************************************************ GOTO to State:2
+//************************************************ reduce the whole program to prog
+Reading a token: Now at end of input.
+Shifting token $end ()
+Entering state 6
+//************************************************ ACTION:Shift to State:6
+Stack now 0 2 6
+Cleanup: popping token $end ()
+Cleanup: popping nterm prog ()
+//************************************************ parsing complete

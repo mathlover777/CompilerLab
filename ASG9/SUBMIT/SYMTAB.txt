@@ -1,0 +1,16 @@
+a int 0
+b int 2
+sum float 4
+xpos float 8
+ypos float 12
+t0 int 16
+t1 float 18
+t2 float 22
+t4 float 26
+t3 float 30
+t5 int 34
+t6 int 36
+t7 int 38
+t8 int 40
+t10 float 42
+t9 float 46

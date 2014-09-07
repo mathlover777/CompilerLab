@@ -1,0 +1,23 @@
+#TEST		START		1003
+FIRST		LDA			C
+			MUL			NINE
+			DIV			FIVE
+			ADD			THIRTYTWO
+			ADD			THIRTYTWO
+			STA 		# too few words
+			STA	     	F
+#			ADD 		FIVE
+			ADD 		NINE
+			STAR  		Q# wrong instruction
+			ADD     	X  ASSDD   ADDDD#too many words
+C			RESW		1
+F			RESW		1
+NINE		WORD		-5T#wrong operand after WORD
+EIGHTqeewewewewewewewewewe 		WORD  		100#Too large word
+TEN     	RESW  		1
+X			RESW		-1# wrong operand after RESW
+C    		RESB 		2
+Q			WORD 		20
+FIVE		WORD		23
+THIRTYTWO	WORD		32
+			END   		FIRST

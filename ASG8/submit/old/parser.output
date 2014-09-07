@@ -1,0 +1,1797 @@
+Grammar
+
+    0 $accept: prog $end
+
+    1 prog: GLOBAL declList stmtListO END
+
+    2 declList: /* empty */
+    3         | decl declList
+
+    4 decl: DEF typeList END
+
+    5 typeList: typeList varList COLON type SEMICOLON
+    6         | varList COLON type SEMICOLON
+    7         | typeList typeDef
+
+    8 varList: var COMMA varList
+    9        | var
+
+   10 var: ID sizeListO
+
+   11 sizeListO: /* empty */
+   12          | sizeList
+
+   13 sizeList: sizeList LEFT_SQ_BKT INT_CONST RIGHT_SQ_BKT
+   14         | LEFT_SQ_BKT INT_CONST RIGHT_SQ_BKT
+
+   15 type: INT
+   16     | FLOAT
+   17     | NUL
+   18     | ID
+
+   19 typeDef: ID ASSIGN PRODUCT typeList END
+
+   20 stmtListO: /* empty */
+   21          | stmtList
+
+   22 stmtList: stmtList stmt
+   23         | stmt
+
+   24 stmt: assignmentStmt SEMICOLON
+   25     | readStmt SEMICOLON
+   26     | printStmt SEMICOLON
+   27     | ifStmt
+   28     | whileStmt
+   29     | returnStmt SEMICOLON
+
+   30 assignmentStmt: dotId ASSIGN exp
+
+   31 dotId: id
+   32      | id DOT dotId
+
+   33 readStmt: READ FORMAT exp
+
+   34 printStmt: PRINT FORMAT exp
+
+   35 ifStmt: IF bExp COLON stmtList elsePart END
+
+   36 elsePart: /* empty */
+   37         | ELSE stmtList
+
+   38 whileStmt: WHILE bExp COLON stmtList END
+
+   39 returnStmt: RETURN expO
+
+   40 expO: /* empty */
+   41     | exp
+
+   42 id: ID indexListO
+
+   43 indexListO: /* empty */
+   44           | indexList
+
+   45 indexList: indexList LEFT_SQ_BKT exp RIGHT_SQ_BKT
+   46          | LEFT_SQ_BKT exp RIGHT_SQ_BKT
+
+   47 bExp: bExp OR bExp
+   48     | bExp AND bExp
+   49     | NOT bExp
+   50     | LEFT_PAREN bExp RIGHT_PAREN
+   51     | exp relOP exp
+
+   52 relOP: EQ
+   53      | LE
+   54      | LT
+   55      | GE
+   56      | GT
+   57      | NE
+
+   58 exp: exp PLUS exp
+   59    | exp MINUS exp
+   60    | exp MULT exp
+   61    | exp DIV exp
+   62    | exp MOD exp
+   63    | exp DOT exp
+   64    | LEFT_PAREN exp RIGHT_PAREN
+   65    | id
+   66    | LEFT_PAREN ID COLON actParamListO RIGHT_PAREN
+   67    | INT_CONST
+   68    | FLOAT_CONST
+
+   69 actParamListO: /* empty */
+   70              | actParamList
+
+   71 actParamList: actParamList COMMA exp
+   72             | exp
+
+
+Terminals, with rules where they appear
+
+$end (0) 0
+error (256)
+AND (258) 48
+ASSIGN (259) 19 30
+COLON (260) 5 6 35 38 66
+COMMA (261) 8 71
+DEF (262) 4
+ELSE (263) 37
+DIV (264) 61
+END (265) 1 4 19 35 38
+EQ (266) 52
+FLOAT (267) 16
+GE (268) 55
+GLOBAL (269) 1
+GT (270) 56
+IF (271) 35
+INT (272) 15
+LEFT_PAREN (273) 50 64 66
+LEFT_SQ_BKT (274) 13 14 45 46
+LE (275) 53
+LT (276) 54
+MINUS (277) 59
+MOD (278) 62
+MULT (279) 60
+NE (280) 57
+NOT (281) 49
+NUL (282) 17
+OR (283) 47
+PLUS (284) 58
+PRINT (285) 34
+PRODUCT (286) 19
+READ (287) 33
+RETURN (288) 39
+RIGHT_PAREN (289) 50 64 66
+RIGHT_SQ_BKT (290) 13 14 45 46
+SEMICOLON (291) 5 6 24 25 26 29
+WHILE (292) 38
+ID (293) 10 18 19 42 66
+INT_CONST (294) 13 14 67
+FLOAT_CONST (295) 68
+DOT (296) 32 63
+FORMAT (297) 33 34
+
+
+Nonterminals, with rules where they appear
+
+$accept (43)
+    on left: 0
+prog (44)
+    on left: 1, on right: 0
+declList (45)
+    on left: 2 3, on right: 1 3
+decl (46)
+    on left: 4, on right: 3
+typeList (47)
+    on left: 5 6 7, on right: 4 5 7 19
+varList (48)
+    on left: 8 9, on right: 5 6 8
+var (49)
+    on left: 10, on right: 8 9
+sizeListO (50)
+    on left: 11 12, on right: 10
+sizeList (51)
+    on left: 13 14, on right: 12 13
+type (52)
+    on left: 15 16 17 18, on right: 5 6
+typeDef (53)
+    on left: 19, on right: 7
+stmtListO (54)
+    on left: 20 21, on right: 1
+stmtList (55)
+    on left: 22 23, on right: 21 22 35 37 38
+stmt (56)
+    on left: 24 25 26 27 28 29, on right: 22 23
+assignmentStmt (57)
+    on left: 30, on right: 24
+dotId (58)
+    on left: 31 32, on right: 30 32
+readStmt (59)
+    on left: 33, on right: 25
+printStmt (60)
+    on left: 34, on right: 26
+ifStmt (61)
+    on left: 35, on right: 27
+elsePart (62)
+    on left: 36 37, on right: 35
+whileStmt (63)
+    on left: 38, on right: 28
+returnStmt (64)
+    on left: 39, on right: 29
+expO (65)
+    on left: 40 41, on right: 39
+id (66)
+    on left: 42, on right: 31 32 65
+indexListO (67)
+    on left: 43 44, on right: 42
+indexList (68)
+    on left: 45 46, on right: 44 45
+bExp (69)
+    on left: 47 48 49 50 51, on right: 35 38 47 48 49 50
+relOP (70)
+    on left: 52 53 54 55 56 57, on right: 51
+exp (71)
+    on left: 58 59 60 61 62 63 64 65 66 67 68, on right: 30 33 34 41
+    45 46 51 58 59 60 61 62 63 64 71 72
+actParamListO (72)
+    on left: 69 70, on right: 66
+actParamList (73)
+    on left: 71 72, on right: 70 71
+
+
+state 0
+
+    0 $accept: . prog $end
+
+    GLOBAL  shift, and go to state 1
+
+    prog  go to state 2
+
+
+state 1
+
+    1 prog: GLOBAL . declList stmtListO END
+
+    DEF  shift, and go to state 3
+
+    $default  reduce using rule 2 (declList)
+
+    declList  go to state 4
+    decl      go to state 5
+
+
+state 2
+
+    0 $accept: prog . $end
+
+    $end  shift, and go to state 6
+
+
+state 3
+
+    4 decl: DEF . typeList END
+
+    ID  shift, and go to state 7
+
+    typeList  go to state 8
+    varList   go to state 9
+    var       go to state 10
+
+
+state 4
+
+    1 prog: GLOBAL declList . stmtListO END
+
+    IF      shift, and go to state 11
+    PRINT   shift, and go to state 12
+    READ    shift, and go to state 13
+    RETURN  shift, and go to state 14
+    WHILE   shift, and go to state 15
+    ID      shift, and go to state 16
+
+    $default  reduce using rule 20 (stmtListO)
+
+    stmtListO       go to state 17
+    stmtList        go to state 18
+    stmt            go to state 19
+    assignmentStmt  go to state 20
+    dotId           go to state 21
+    readStmt        go to state 22
+    printStmt       go to state 23
+    ifStmt          go to state 24
+    whileStmt       go to state 25
+    returnStmt      go to state 26
+    id              go to state 27
+
+
+state 5
+
+    3 declList: decl . declList
+
+    DEF  shift, and go to state 3
+
+    $default  reduce using rule 2 (declList)
+
+    declList  go to state 28
+    decl      go to state 5
+
+
+state 6
+
+    0 $accept: prog $end .
+
+    $default  accept
+
+
+state 7
+
+   10 var: ID . sizeListO
+
+    LEFT_SQ_BKT  shift, and go to state 29
+
+    $default  reduce using rule 11 (sizeListO)
+
+    sizeListO  go to state 30
+    sizeList   go to state 31
+
+
+state 8
+
+    4 decl: DEF typeList . END
+    5 typeList: typeList . varList COLON type SEMICOLON
+    7         | typeList . typeDef
+
+    END  shift, and go to state 32
+    ID   shift, and go to state 33
+
+    varList  go to state 34
+    var      go to state 10
+    typeDef  go to state 35
+
+
+state 9
+
+    6 typeList: varList . COLON type SEMICOLON
+
+    COLON  shift, and go to state 36
+
+
+state 10
+
+    8 varList: var . COMMA varList
+    9        | var .
+
+    COMMA  shift, and go to state 37
+
+    $default  reduce using rule 9 (varList)
+
+
+state 11
+
+   35 ifStmt: IF . bExp COLON stmtList elsePart END
+
+    LEFT_PAREN   shift, and go to state 38
+    NOT          shift, and go to state 39
+    ID           shift, and go to state 16
+    INT_CONST    shift, and go to state 40
+    FLOAT_CONST  shift, and go to state 41
+
+    id    go to state 42
+    bExp  go to state 43
+    exp   go to state 44
+
+
+state 12
+
+   34 printStmt: PRINT . FORMAT exp
+
+    FORMAT  shift, and go to state 45
+
+
+state 13
+
+   33 readStmt: READ . FORMAT exp
+
+    FORMAT  shift, and go to state 46
+
+
+state 14
+
+   39 returnStmt: RETURN . expO
+
+    LEFT_PAREN   shift, and go to state 47
+    ID           shift, and go to state 16
+    INT_CONST    shift, and go to state 40
+    FLOAT_CONST  shift, and go to state 41
+
+    $default  reduce using rule 40 (expO)
+
+    expO  go to state 48
+    id    go to state 42
+    exp   go to state 49
+
+
+state 15
+
+   38 whileStmt: WHILE . bExp COLON stmtList END
+
+    LEFT_PAREN   shift, and go to state 38
+    NOT          shift, and go to state 39
+    ID           shift, and go to state 16
+    INT_CONST    shift, and go to state 40
+    FLOAT_CONST  shift, and go to state 41
+
+    id    go to state 42
+    bExp  go to state 50
+    exp   go to state 44
+
+
+state 16
+
+   42 id: ID . indexListO
+
+    LEFT_SQ_BKT  shift, and go to state 51
+
+    $default  reduce using rule 43 (indexListO)
+
+    indexListO  go to state 52
+    indexList   go to state 53
+
+
+state 17
+
+    1 prog: GLOBAL declList stmtListO . END
+
+    END  shift, and go to state 54
+
+
+state 18
+
+   21 stmtListO: stmtList .
+   22 stmtList: stmtList . stmt
+
+    IF      shift, and go to state 11
+    PRINT   shift, and go to state 12
+    READ    shift, and go to state 13
+    RETURN  shift, and go to state 14
+    WHILE   shift, and go to state 15
+    ID      shift, and go to state 16
+
+    $default  reduce using rule 21 (stmtListO)
+
+    stmt            go to state 55
+    assignmentStmt  go to state 20
+    dotId           go to state 21
+    readStmt        go to state 22
+    printStmt       go to state 23
+    ifStmt          go to state 24
+    whileStmt       go to state 25
+    returnStmt      go to state 26
+    id              go to state 27
+
+
+state 19
+
+   23 stmtList: stmt .
+
+    $default  reduce using rule 23 (stmtList)
+
+
+state 20
+
+   24 stmt: assignmentStmt . SEMICOLON
+
+    SEMICOLON  shift, and go to state 56
+
+
+state 21
+
+   30 assignmentStmt: dotId . ASSIGN exp
+
+    ASSIGN  shift, and go to state 57
+
+
+state 22
+
+   25 stmt: readStmt . SEMICOLON
+
+    SEMICOLON  shift, and go to state 58
+
+
+state 23
+
+   26 stmt: printStmt . SEMICOLON
+
+    SEMICOLON  shift, and go to state 59
+
+
+state 24
+
+   27 stmt: ifStmt .
+
+    $default  reduce using rule 27 (stmt)
+
+
+state 25
+
+   28 stmt: whileStmt .
+
+    $default  reduce using rule 28 (stmt)
+
+
+state 26
+
+   29 stmt: returnStmt . SEMICOLON
+
+    SEMICOLON  shift, and go to state 60
+
+
+state 27
+
+   31 dotId: id .
+   32      | id . DOT dotId
+
+    DOT  shift, and go to state 61
+
+    $default  reduce using rule 31 (dotId)
+
+
+state 28
+
+    3 declList: decl declList .
+
+    $default  reduce using rule 3 (declList)
+
+
+state 29
+
+   14 sizeList: LEFT_SQ_BKT . INT_CONST RIGHT_SQ_BKT
+
+    INT_CONST  shift, and go to state 62
+
+
+state 30
+
+   10 var: ID sizeListO .
+
+    $default  reduce using rule 10 (var)
+
+
+state 31
+
+   12 sizeListO: sizeList .
+   13 sizeList: sizeList . LEFT_SQ_BKT INT_CONST RIGHT_SQ_BKT
+
+    LEFT_SQ_BKT  shift, and go to state 63
+
+    $default  reduce using rule 12 (sizeListO)
+
+
+state 32
+
+    4 decl: DEF typeList END .
+
+    $default  reduce using rule 4 (decl)
+
+
+state 33
+
+   10 var: ID . sizeListO
+   19 typeDef: ID . ASSIGN PRODUCT typeList END
+
+    ASSIGN       shift, and go to state 64
+    LEFT_SQ_BKT  shift, and go to state 29
+
+    $default  reduce using rule 11 (sizeListO)
+
+    sizeListO  go to state 30
+    sizeList   go to state 31
+
+
+state 34
+
+    5 typeList: typeList varList . COLON type SEMICOLON
+
+    COLON  shift, and go to state 65
+
+
+state 35
+
+    7 typeList: typeList typeDef .
+
+    $default  reduce using rule 7 (typeList)
+
+
+state 36
+
+    6 typeList: varList COLON . type SEMICOLON
+
+    FLOAT  shift, and go to state 66
+    INT    shift, and go to state 67
+    NUL    shift, and go to state 68
+    ID     shift, and go to state 69
+
+    type  go to state 70
+
+
+state 37
+
+    8 varList: var COMMA . varList
+
+    ID  shift, and go to state 7
+
+    varList  go to state 71
+    var      go to state 10
+
+
+state 38
+
+   50 bExp: LEFT_PAREN . bExp RIGHT_PAREN
+   64 exp: LEFT_PAREN . exp RIGHT_PAREN
+   66    | LEFT_PAREN . ID COLON actParamListO RIGHT_PAREN
+
+    LEFT_PAREN   shift, and go to state 38
+    NOT          shift, and go to state 39
+    ID           shift, and go to state 72
+    INT_CONST    shift, and go to state 40
+    FLOAT_CONST  shift, and go to state 41
+
+    id    go to state 42
+    bExp  go to state 73
+    exp   go to state 74
+
+
+state 39
+
+   49 bExp: NOT . bExp
+
+    LEFT_PAREN   shift, and go to state 38
+    NOT          shift, and go to state 39
+    ID           shift, and go to state 16
+    INT_CONST    shift, and go to state 40
+    FLOAT_CONST  shift, and go to state 41
+
+    id    go to state 42
+    bExp  go to state 75
+    exp   go to state 44
+
+
+state 40
+
+   67 exp: INT_CONST .
+
+    $default  reduce using rule 67 (exp)
+
+
+state 41
+
+   68 exp: FLOAT_CONST .
+
+    $default  reduce using rule 68 (exp)
+
+
+state 42
+
+   65 exp: id .
+
+    $default  reduce using rule 65 (exp)
+
+
+state 43
+
+   35 ifStmt: IF bExp . COLON stmtList elsePart END
+   47 bExp: bExp . OR bExp
+   48     | bExp . AND bExp
+
+    AND    shift, and go to state 76
+    COLON  shift, and go to state 77
+    OR     shift, and go to state 78
+
+
+state 44
+
+   51 bExp: exp . relOP exp
+   58 exp: exp . PLUS exp
+   59    | exp . MINUS exp
+   60    | exp . MULT exp
+   61    | exp . DIV exp
+   62    | exp . MOD exp
+   63    | exp . DOT exp
+
+    DIV    shift, and go to state 79
+    EQ     shift, and go to state 80
+    GE     shift, and go to state 81
+    GT     shift, and go to state 82
+    LE     shift, and go to state 83
+    LT     shift, and go to state 84
+    MINUS  shift, and go to state 85
+    MOD    shift, and go to state 86
+    MULT   shift, and go to state 87
+    NE     shift, and go to state 88
+    PLUS   shift, and go to state 89
+    DOT    shift, and go to state 90
+
+    relOP  go to state 91
+
+
+state 45
+
+   34 printStmt: PRINT FORMAT . exp
+
+    LEFT_PAREN   shift, and go to state 47
+    ID           shift, and go to state 16
+    INT_CONST    shift, and go to state 40
+    FLOAT_CONST  shift, and go to state 41
+
+    id   go to state 42
+    exp  go to state 92
+
+
+state 46
+
+   33 readStmt: READ FORMAT . exp
+
+    LEFT_PAREN   shift, and go to state 47
+    ID           shift, and go to state 16
+    INT_CONST    shift, and go to state 40
+    FLOAT_CONST  shift, and go to state 41
+
+    id   go to state 42
+    exp  go to state 93
+
+
+state 47
+
+   64 exp: LEFT_PAREN . exp RIGHT_PAREN
+   66    | LEFT_PAREN . ID COLON actParamListO RIGHT_PAREN
+
+    LEFT_PAREN   shift, and go to state 47
+    ID           shift, and go to state 72
+    INT_CONST    shift, and go to state 40
+    FLOAT_CONST  shift, and go to state 41
+
+    id   go to state 42
+    exp  go to state 94
+
+
+state 48
+
+   39 returnStmt: RETURN expO .
+
+    $default  reduce using rule 39 (returnStmt)
+
+
+state 49
+
+   41 expO: exp .
+   58 exp: exp . PLUS exp
+   59    | exp . MINUS exp
+   60    | exp . MULT exp
+   61    | exp . DIV exp
+   62    | exp . MOD exp
+   63    | exp . DOT exp
+
+    DIV    shift, and go to state 79
+    MINUS  shift, and go to state 85
+    MOD    shift, and go to state 86
+    MULT   shift, and go to state 87
+    PLUS   shift, and go to state 89
+    DOT    shift, and go to state 90
+
+    $default  reduce using rule 41 (expO)
+
+
+state 50
+
+   38 whileStmt: WHILE bExp . COLON stmtList END
+   47 bExp: bExp . OR bExp
+   48     | bExp . AND bExp
+
+    AND    shift, and go to state 76
+    COLON  shift, and go to state 95
+    OR     shift, and go to state 78
+
+
+state 51
+
+   46 indexList: LEFT_SQ_BKT . exp RIGHT_SQ_BKT
+
+    LEFT_PAREN   shift, and go to state 47
+    ID           shift, and go to state 16
+    INT_CONST    shift, and go to state 40
+    FLOAT_CONST  shift, and go to state 41
+
+    id   go to state 42
+    exp  go to state 96
+
+
+state 52
+
+   42 id: ID indexListO .
+
+    $default  reduce using rule 42 (id)
+
+
+state 53
+
+   44 indexListO: indexList .
+   45 indexList: indexList . LEFT_SQ_BKT exp RIGHT_SQ_BKT
+
+    LEFT_SQ_BKT  shift, and go to state 97
+
+    $default  reduce using rule 44 (indexListO)
+
+
+state 54
+
+    1 prog: GLOBAL declList stmtListO END .
+
+    $default  reduce using rule 1 (prog)
+
+
+state 55
+
+   22 stmtList: stmtList stmt .
+
+    $default  reduce using rule 22 (stmtList)
+
+
+state 56
+
+   24 stmt: assignmentStmt SEMICOLON .
+
+    $default  reduce using rule 24 (stmt)
+
+
+state 57
+
+   30 assignmentStmt: dotId ASSIGN . exp
+
+    LEFT_PAREN   shift, and go to state 47
+    ID           shift, and go to state 16
+    INT_CONST    shift, and go to state 40
+    FLOAT_CONST  shift, and go to state 41
+
+    id   go to state 42
+    exp  go to state 98
+
+
+state 58
+
+   25 stmt: readStmt SEMICOLON .
+
+    $default  reduce using rule 25 (stmt)
+
+
+state 59
+
+   26 stmt: printStmt SEMICOLON .
+
+    $default  reduce using rule 26 (stmt)
+
+
+state 60
+
+   29 stmt: returnStmt SEMICOLON .
+
+    $default  reduce using rule 29 (stmt)
+
+
+state 61
+
+   32 dotId: id DOT . dotId
+
+    ID  shift, and go to state 16
+
+    dotId  go to state 99
+    id     go to state 27
+
+
+state 62
+
+   14 sizeList: LEFT_SQ_BKT INT_CONST . RIGHT_SQ_BKT
+
+    RIGHT_SQ_BKT  shift, and go to state 100
+
+
+state 63
+
+   13 sizeList: sizeList LEFT_SQ_BKT . INT_CONST RIGHT_SQ_BKT
+
+    INT_CONST  shift, and go to state 101
+
+
+state 64
+
+   19 typeDef: ID ASSIGN . PRODUCT typeList END
+
+    PRODUCT  shift, and go to state 102
+
+
+state 65
+
+    5 typeList: typeList varList COLON . type SEMICOLON
+
+    FLOAT  shift, and go to state 66
+    INT    shift, and go to state 67
+    NUL    shift, and go to state 68
+    ID     shift, and go to state 69
+
+    type  go to state 103
+
+
+state 66
+
+   16 type: FLOAT .
+
+    $default  reduce using rule 16 (type)
+
+
+state 67
+
+   15 type: INT .
+
+    $default  reduce using rule 15 (type)
+
+
+state 68
+
+   17 type: NUL .
+
+    $default  reduce using rule 17 (type)
+
+
+state 69
+
+   18 type: ID .
+
+    $default  reduce using rule 18 (type)
+
+
+state 70
+
+    6 typeList: varList COLON type . SEMICOLON
+
+    SEMICOLON  shift, and go to state 104
+
+
+state 71
+
+    8 varList: var COMMA varList .
+
+    $default  reduce using rule 8 (varList)
+
+
+state 72
+
+   42 id: ID . indexListO
+   66 exp: LEFT_PAREN ID . COLON actParamListO RIGHT_PAREN
+
+    COLON        shift, and go to state 105
+    LEFT_SQ_BKT  shift, and go to state 51
+
+    $default  reduce using rule 43 (indexListO)
+
+    indexListO  go to state 52
+    indexList   go to state 53
+
+
+state 73
+
+   47 bExp: bExp . OR bExp
+   48     | bExp . AND bExp
+   50     | LEFT_PAREN bExp . RIGHT_PAREN
+
+    AND          shift, and go to state 76
+    OR           shift, and go to state 78
+    RIGHT_PAREN  shift, and go to state 106
+
+
+state 74
+
+   51 bExp: exp . relOP exp
+   58 exp: exp . PLUS exp
+   59    | exp . MINUS exp
+   60    | exp . MULT exp
+   61    | exp . DIV exp
+   62    | exp . MOD exp
+   63    | exp . DOT exp
+   64    | LEFT_PAREN exp . RIGHT_PAREN
+
+    DIV          shift, and go to state 79
+    EQ           shift, and go to state 80
+    GE           shift, and go to state 81
+    GT           shift, and go to state 82
+    LE           shift, and go to state 83
+    LT           shift, and go to state 84
+    MINUS        shift, and go to state 85
+    MOD          shift, and go to state 86
+    MULT         shift, and go to state 87
+    NE           shift, and go to state 88
+    PLUS         shift, and go to state 89
+    RIGHT_PAREN  shift, and go to state 107
+    DOT          shift, and go to state 90
+
+    relOP  go to state 91
+
+
+state 75
+
+   47 bExp: bExp . OR bExp
+   48     | bExp . AND bExp
+   49     | NOT bExp .
+
+    $default  reduce using rule 49 (bExp)
+
+
+state 76
+
+   48 bExp: bExp AND . bExp
+
+    LEFT_PAREN   shift, and go to state 38
+    NOT          shift, and go to state 39
+    ID           shift, and go to state 16
+    INT_CONST    shift, and go to state 40
+    FLOAT_CONST  shift, and go to state 41
+
+    id    go to state 42
+    bExp  go to state 108
+    exp   go to state 44
+
+
+state 77
+
+   35 ifStmt: IF bExp COLON . stmtList elsePart END
+
+    IF      shift, and go to state 11
+    PRINT   shift, and go to state 12
+    READ    shift, and go to state 13
+    RETURN  shift, and go to state 14
+    WHILE   shift, and go to state 15
+    ID      shift, and go to state 16
+
+    stmtList        go to state 109
+    stmt            go to state 19
+    assignmentStmt  go to state 20
+    dotId           go to state 21
+    readStmt        go to state 22
+    printStmt       go to state 23
+    ifStmt          go to state 24
+    whileStmt       go to state 25
+    returnStmt      go to state 26
+    id              go to state 27
+
+
+state 78
+
+   47 bExp: bExp OR . bExp
+
+    LEFT_PAREN   shift, and go to state 38
+    NOT          shift, and go to state 39
+    ID           shift, and go to state 16
+    INT_CONST    shift, and go to state 40
+    FLOAT_CONST  shift, and go to state 41
+
+    id    go to state 42
+    bExp  go to state 110
+    exp   go to state 44
+
+
+state 79
+
+   61 exp: exp DIV . exp
+
+    LEFT_PAREN   shift, and go to state 47
+    ID           shift, and go to state 16
+    INT_CONST    shift, and go to state 40
+    FLOAT_CONST  shift, and go to state 41
+
+    id   go to state 42
+    exp  go to state 111
+
+
+state 80
+
+   52 relOP: EQ .
+
+    $default  reduce using rule 52 (relOP)
+
+
+state 81
+
+   55 relOP: GE .
+
+    $default  reduce using rule 55 (relOP)
+
+
+state 82
+
+   56 relOP: GT .
+
+    $default  reduce using rule 56 (relOP)
+
+
+state 83
+
+   53 relOP: LE .
+
+    $default  reduce using rule 53 (relOP)
+
+
+state 84
+
+   54 relOP: LT .
+
+    $default  reduce using rule 54 (relOP)
+
+
+state 85
+
+   59 exp: exp MINUS . exp
+
+    LEFT_PAREN   shift, and go to state 47
+    ID           shift, and go to state 16
+    INT_CONST    shift, and go to state 40
+    FLOAT_CONST  shift, and go to state 41
+
+    id   go to state 42
+    exp  go to state 112
+
+
+state 86
+
+   62 exp: exp MOD . exp
+
+    LEFT_PAREN   shift, and go to state 47
+    ID           shift, and go to state 16
+    INT_CONST    shift, and go to state 40
+    FLOAT_CONST  shift, and go to state 41
+
+    id   go to state 42
+    exp  go to state 113
+
+
+state 87
+
+   60 exp: exp MULT . exp
+
+    LEFT_PAREN   shift, and go to state 47
+    ID           shift, and go to state 16
+    INT_CONST    shift, and go to state 40
+    FLOAT_CONST  shift, and go to state 41
+
+    id   go to state 42
+    exp  go to state 114
+
+
+state 88
+
+   57 relOP: NE .
+
+    $default  reduce using rule 57 (relOP)
+
+
+state 89
+
+   58 exp: exp PLUS . exp
+
+    LEFT_PAREN   shift, and go to state 47
+    ID           shift, and go to state 16
+    INT_CONST    shift, and go to state 40
+    FLOAT_CONST  shift, and go to state 41
+
+    id   go to state 42
+    exp  go to state 115
+
+
+state 90
+
+   63 exp: exp DOT . exp
+
+    LEFT_PAREN   shift, and go to state 47
+    ID           shift, and go to state 16
+    INT_CONST    shift, and go to state 40
+    FLOAT_CONST  shift, and go to state 41
+
+    id   go to state 42
+    exp  go to state 116
+
+
+state 91
+
+   51 bExp: exp relOP . exp
+
+    LEFT_PAREN   shift, and go to state 47
+    ID           shift, and go to state 16
+    INT_CONST    shift, and go to state 40
+    FLOAT_CONST  shift, and go to state 41
+
+    id   go to state 42
+    exp  go to state 117
+
+
+state 92
+
+   34 printStmt: PRINT FORMAT exp .
+   58 exp: exp . PLUS exp
+   59    | exp . MINUS exp
+   60    | exp . MULT exp
+   61    | exp . DIV exp
+   62    | exp . MOD exp
+   63    | exp . DOT exp
+
+    DIV    shift, and go to state 79
+    MINUS  shift, and go to state 85
+    MOD    shift, and go to state 86
+    MULT   shift, and go to state 87
+    PLUS   shift, and go to state 89
+    DOT    shift, and go to state 90
+
+    $default  reduce using rule 34 (printStmt)
+
+
+state 93
+
+   33 readStmt: READ FORMAT exp .
+   58 exp: exp . PLUS exp
+   59    | exp . MINUS exp
+   60    | exp . MULT exp
+   61    | exp . DIV exp
+   62    | exp . MOD exp
+   63    | exp . DOT exp
+
+    DIV    shift, and go to state 79
+    MINUS  shift, and go to state 85
+    MOD    shift, and go to state 86
+    MULT   shift, and go to state 87
+    PLUS   shift, and go to state 89
+    DOT    shift, and go to state 90
+
+    $default  reduce using rule 33 (readStmt)
+
+
+state 94
+
+   58 exp: exp . PLUS exp
+   59    | exp . MINUS exp
+   60    | exp . MULT exp
+   61    | exp . DIV exp
+   62    | exp . MOD exp
+   63    | exp . DOT exp
+   64    | LEFT_PAREN exp . RIGHT_PAREN
+
+    DIV          shift, and go to state 79
+    MINUS        shift, and go to state 85
+    MOD          shift, and go to state 86
+    MULT         shift, and go to state 87
+    PLUS         shift, and go to state 89
+    RIGHT_PAREN  shift, and go to state 107
+    DOT          shift, and go to state 90
+
+
+state 95
+
+   38 whileStmt: WHILE bExp COLON . stmtList END
+
+    IF      shift, and go to state 11
+    PRINT   shift, and go to state 12
+    READ    shift, and go to state 13
+    RETURN  shift, and go to state 14
+    WHILE   shift, and go to state 15
+    ID      shift, and go to state 16
+
+    stmtList        go to state 118
+    stmt            go to state 19
+    assignmentStmt  go to state 20
+    dotId           go to state 21
+    readStmt        go to state 22
+    printStmt       go to state 23
+    ifStmt          go to state 24
+    whileStmt       go to state 25
+    returnStmt      go to state 26
+    id              go to state 27
+
+
+state 96
+
+   46 indexList: LEFT_SQ_BKT exp . RIGHT_SQ_BKT
+   58 exp: exp . PLUS exp
+   59    | exp . MINUS exp
+   60    | exp . MULT exp
+   61    | exp . DIV exp
+   62    | exp . MOD exp
+   63    | exp . DOT exp
+
+    DIV           shift, and go to state 79
+    MINUS         shift, and go to state 85
+    MOD           shift, and go to state 86
+    MULT          shift, and go to state 87
+    PLUS          shift, and go to state 89
+    RIGHT_SQ_BKT  shift, and go to state 119
+    DOT           shift, and go to state 90
+
+
+state 97
+
+   45 indexList: indexList LEFT_SQ_BKT . exp RIGHT_SQ_BKT
+
+    LEFT_PAREN   shift, and go to state 47
+    ID           shift, and go to state 16
+    INT_CONST    shift, and go to state 40
+    FLOAT_CONST  shift, and go to state 41
+
+    id   go to state 42
+    exp  go to state 120
+
+
+state 98
+
+   30 assignmentStmt: dotId ASSIGN exp .
+   58 exp: exp . PLUS exp
+   59    | exp . MINUS exp
+   60    | exp . MULT exp
+   61    | exp . DIV exp
+   62    | exp . MOD exp
+   63    | exp . DOT exp
+
+    DIV    shift, and go to state 79
+    MINUS  shift, and go to state 85
+    MOD    shift, and go to state 86
+    MULT   shift, and go to state 87
+    PLUS   shift, and go to state 89
+    DOT    shift, and go to state 90
+
+    $default  reduce using rule 30 (assignmentStmt)
+
+
+state 99
+
+   32 dotId: id DOT dotId .
+
+    $default  reduce using rule 32 (dotId)
+
+
+state 100
+
+   14 sizeList: LEFT_SQ_BKT INT_CONST RIGHT_SQ_BKT .
+
+    $default  reduce using rule 14 (sizeList)
+
+
+state 101
+
+   13 sizeList: sizeList LEFT_SQ_BKT INT_CONST . RIGHT_SQ_BKT
+
+    RIGHT_SQ_BKT  shift, and go to state 121
+
+
+state 102
+
+   19 typeDef: ID ASSIGN PRODUCT . typeList END
+
+    ID  shift, and go to state 7
+
+    typeList  go to state 122
+    varList   go to state 9
+    var       go to state 10
+
+
+state 103
+
+    5 typeList: typeList varList COLON type . SEMICOLON
+
+    SEMICOLON  shift, and go to state 123
+
+
+state 104
+
+    6 typeList: varList COLON type SEMICOLON .
+
+    $default  reduce using rule 6 (typeList)
+
+
+state 105
+
+   66 exp: LEFT_PAREN ID COLON . actParamListO RIGHT_PAREN
+
+    LEFT_PAREN   shift, and go to state 47
+    ID           shift, and go to state 16
+    INT_CONST    shift, and go to state 40
+    FLOAT_CONST  shift, and go to state 41
+
+    $default  reduce using rule 69 (actParamListO)
+
+    id             go to state 42
+    exp            go to state 124
+    actParamListO  go to state 125
+    actParamList   go to state 126
+
+
+state 106
+
+   50 bExp: LEFT_PAREN bExp RIGHT_PAREN .
+
+    $default  reduce using rule 50 (bExp)
+
+
+state 107
+
+   64 exp: LEFT_PAREN exp RIGHT_PAREN .
+
+    $default  reduce using rule 64 (exp)
+
+
+state 108
+
+   47 bExp: bExp . OR bExp
+   48     | bExp . AND bExp
+   48     | bExp AND bExp .
+
+    $default  reduce using rule 48 (bExp)
+
+
+state 109
+
+   22 stmtList: stmtList . stmt
+   35 ifStmt: IF bExp COLON stmtList . elsePart END
+
+    ELSE    shift, and go to state 127
+    IF      shift, and go to state 11
+    PRINT   shift, and go to state 12
+    READ    shift, and go to state 13
+    RETURN  shift, and go to state 14
+    WHILE   shift, and go to state 15
+    ID      shift, and go to state 16
+
+    $default  reduce using rule 36 (elsePart)
+
+    stmt            go to state 55
+    assignmentStmt  go to state 20
+    dotId           go to state 21
+    readStmt        go to state 22
+    printStmt       go to state 23
+    ifStmt          go to state 24
+    elsePart        go to state 128
+    whileStmt       go to state 25
+    returnStmt      go to state 26
+    id              go to state 27
+
+
+state 110
+
+   47 bExp: bExp . OR bExp
+   47     | bExp OR bExp .
+   48     | bExp . AND bExp
+
+    $default  reduce using rule 47 (bExp)
+
+
+state 111
+
+   58 exp: exp . PLUS exp
+   59    | exp . MINUS exp
+   60    | exp . MULT exp
+   61    | exp . DIV exp
+   61    | exp DIV exp .
+   62    | exp . MOD exp
+   63    | exp . DOT exp
+
+    DOT  shift, and go to state 90
+
+    $default  reduce using rule 61 (exp)
+
+
+state 112
+
+   58 exp: exp . PLUS exp
+   59    | exp . MINUS exp
+   59    | exp MINUS exp .
+   60    | exp . MULT exp
+   61    | exp . DIV exp
+   62    | exp . MOD exp
+   63    | exp . DOT exp
+
+    DIV   shift, and go to state 79
+    MOD   shift, and go to state 86
+    MULT  shift, and go to state 87
+    DOT   shift, and go to state 90
+
+    $default  reduce using rule 59 (exp)
+
+
+state 113
+
+   58 exp: exp . PLUS exp
+   59    | exp . MINUS exp
+   60    | exp . MULT exp
+   61    | exp . DIV exp
+   62    | exp . MOD exp
+   62    | exp MOD exp .
+   63    | exp . DOT exp
+
+    DOT  shift, and go to state 90
+
+    $default  reduce using rule 62 (exp)
+
+
+state 114
+
+   58 exp: exp . PLUS exp
+   59    | exp . MINUS exp
+   60    | exp . MULT exp
+   60    | exp MULT exp .
+   61    | exp . DIV exp
+   62    | exp . MOD exp
+   63    | exp . DOT exp
+
+    DOT  shift, and go to state 90
+
+    $default  reduce using rule 60 (exp)
+
+
+state 115
+
+   58 exp: exp . PLUS exp
+   58    | exp PLUS exp .
+   59    | exp . MINUS exp
+   60    | exp . MULT exp
+   61    | exp . DIV exp
+   62    | exp . MOD exp
+   63    | exp . DOT exp
+
+    DIV   shift, and go to state 79
+    MOD   shift, and go to state 86
+    MULT  shift, and go to state 87
+    DOT   shift, and go to state 90
+
+    $default  reduce using rule 58 (exp)
+
+
+state 116
+
+   58 exp: exp . PLUS exp
+   59    | exp . MINUS exp
+   60    | exp . MULT exp
+   61    | exp . DIV exp
+   62    | exp . MOD exp
+   63    | exp . DOT exp
+   63    | exp DOT exp .
+
+    $default  reduce using rule 63 (exp)
+
+
+state 117
+
+   51 bExp: exp relOP exp .
+   58 exp: exp . PLUS exp
+   59    | exp . MINUS exp
+   60    | exp . MULT exp
+   61    | exp . DIV exp
+   62    | exp . MOD exp
+   63    | exp . DOT exp
+
+    DIV    shift, and go to state 79
+    MINUS  shift, and go to state 85
+    MOD    shift, and go to state 86
+    MULT   shift, and go to state 87
+    PLUS   shift, and go to state 89
+    DOT    shift, and go to state 90
+
+    $default  reduce using rule 51 (bExp)
+
+
+state 118
+
+   22 stmtList: stmtList . stmt
+   38 whileStmt: WHILE bExp COLON stmtList . END
+
+    END     shift, and go to state 129
+    IF      shift, and go to state 11
+    PRINT   shift, and go to state 12
+    READ    shift, and go to state 13
+    RETURN  shift, and go to state 14
+    WHILE   shift, and go to state 15
+    ID      shift, and go to state 16
+
+    stmt            go to state 55
+    assignmentStmt  go to state 20
+    dotId           go to state 21
+    readStmt        go to state 22
+    printStmt       go to state 23
+    ifStmt          go to state 24
+    whileStmt       go to state 25
+    returnStmt      go to state 26
+    id              go to state 27
+
+
+state 119
+
+   46 indexList: LEFT_SQ_BKT exp RIGHT_SQ_BKT .
+
+    $default  reduce using rule 46 (indexList)
+
+
+state 120
+
+   45 indexList: indexList LEFT_SQ_BKT exp . RIGHT_SQ_BKT
+   58 exp: exp . PLUS exp
+   59    | exp . MINUS exp
+   60    | exp . MULT exp
+   61    | exp . DIV exp
+   62    | exp . MOD exp
+   63    | exp . DOT exp
+
+    DIV           shift, and go to state 79
+    MINUS         shift, and go to state 85
+    MOD           shift, and go to state 86
+    MULT          shift, and go to state 87
+    PLUS          shift, and go to state 89
+    RIGHT_SQ_BKT  shift, and go to state 130
+    DOT           shift, and go to state 90
+
+
+state 121
+
+   13 sizeList: sizeList LEFT_SQ_BKT INT_CONST RIGHT_SQ_BKT .
+
+    $default  reduce using rule 13 (sizeList)
+
+
+state 122
+
+    5 typeList: typeList . varList COLON type SEMICOLON
+    7         | typeList . typeDef
+   19 typeDef: ID ASSIGN PRODUCT typeList . END
+
+    END  shift, and go to state 131
+    ID   shift, and go to state 33
+
+    varList  go to state 34
+    var      go to state 10
+    typeDef  go to state 35
+
+
+state 123
+
+    5 typeList: typeList varList COLON type SEMICOLON .
+
+    $default  reduce using rule 5 (typeList)
+
+
+state 124
+
+   58 exp: exp . PLUS exp
+   59    | exp . MINUS exp
+   60    | exp . MULT exp
+   61    | exp . DIV exp
+   62    | exp . MOD exp
+   63    | exp . DOT exp
+   72 actParamList: exp .
+
+    DIV    shift, and go to state 79
+    MINUS  shift, and go to state 85
+    MOD    shift, and go to state 86
+    MULT   shift, and go to state 87
+    PLUS   shift, and go to state 89
+    DOT    shift, and go to state 90
+
+    $default  reduce using rule 72 (actParamList)
+
+
+state 125
+
+   66 exp: LEFT_PAREN ID COLON actParamListO . RIGHT_PAREN
+
+    RIGHT_PAREN  shift, and go to state 132
+
+
+state 126
+
+   70 actParamListO: actParamList .
+   71 actParamList: actParamList . COMMA exp
+
+    COMMA  shift, and go to state 133
+
+    $default  reduce using rule 70 (actParamListO)
+
+
+state 127
+
+   37 elsePart: ELSE . stmtList
+
+    IF      shift, and go to state 11
+    PRINT   shift, and go to state 12
+    READ    shift, and go to state 13
+    RETURN  shift, and go to state 14
+    WHILE   shift, and go to state 15
+    ID      shift, and go to state 16
+
+    stmtList        go to state 134
+    stmt            go to state 19
+    assignmentStmt  go to state 20
+    dotId           go to state 21
+    readStmt        go to state 22
+    printStmt       go to state 23
+    ifStmt          go to state 24
+    whileStmt       go to state 25
+    returnStmt      go to state 26
+    id              go to state 27
+
+
+state 128
+
+   35 ifStmt: IF bExp COLON stmtList elsePart . END
+
+    END  shift, and go to state 135
+
+
+state 129
+
+   38 whileStmt: WHILE bExp COLON stmtList END .
+
+    $default  reduce using rule 38 (whileStmt)
+
+
+state 130
+
+   45 indexList: indexList LEFT_SQ_BKT exp RIGHT_SQ_BKT .
+
+    $default  reduce using rule 45 (indexList)
+
+
+state 131
+
+   19 typeDef: ID ASSIGN PRODUCT typeList END .
+
+    $default  reduce using rule 19 (typeDef)
+
+
+state 132
+
+   66 exp: LEFT_PAREN ID COLON actParamListO RIGHT_PAREN .
+
+    $default  reduce using rule 66 (exp)
+
+
+state 133
+
+   71 actParamList: actParamList COMMA . exp
+
+    LEFT_PAREN   shift, and go to state 47
+    ID           shift, and go to state 16
+    INT_CONST    shift, and go to state 40
+    FLOAT_CONST  shift, and go to state 41
+
+    id   go to state 42
+    exp  go to state 136
+
+
+state 134
+
+   22 stmtList: stmtList . stmt
+   37 elsePart: ELSE stmtList .
+
+    IF      shift, and go to state 11
+    PRINT   shift, and go to state 12
+    READ    shift, and go to state 13
+    RETURN  shift, and go to state 14
+    WHILE   shift, and go to state 15
+    ID      shift, and go to state 16
+
+    $default  reduce using rule 37 (elsePart)
+
+    stmt            go to state 55
+    assignmentStmt  go to state 20
+    dotId           go to state 21
+    readStmt        go to state 22
+    printStmt       go to state 23
+    ifStmt          go to state 24
+    whileStmt       go to state 25
+    returnStmt      go to state 26
+    id              go to state 27
+
+
+state 135
+
+   35 ifStmt: IF bExp COLON stmtList elsePart END .
+
+    $default  reduce using rule 35 (ifStmt)
+
+
+state 136
+
+   58 exp: exp . PLUS exp
+   59    | exp . MINUS exp
+   60    | exp . MULT exp
+   61    | exp . DIV exp
+   62    | exp . MOD exp
+   63    | exp . DOT exp
+   71 actParamList: actParamList COMMA exp .
+
+    DIV    shift, and go to state 79
+    MINUS  shift, and go to state 85
+    MOD    shift, and go to state 86
+    MULT   shift, and go to state 87
+    PLUS   shift, and go to state 89
+    DOT    shift, and go to state 90
+
+    $default  reduce using rule 71 (actParamList)

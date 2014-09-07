@@ -1,0 +1,87 @@
+Grammar
+
+    0 $accept: prog $end
+
+    1 prog: INT_CONST prog
+    2     | FLOAT_CONST prog
+    3     | /* empty */
+
+
+Terminals, with rules where they appear
+
+$end (0) 0
+error (256)
+INT_CONST (258) 1
+FLOAT_CONST (259) 2
+
+
+Nonterminals, with rules where they appear
+
+$accept (5)
+    on left: 0
+prog (6)
+    on left: 1 2 3, on right: 0 1 2
+
+
+state 0
+
+    0 $accept: . prog $end
+
+    INT_CONST    shift, and go to state 1
+    FLOAT_CONST  shift, and go to state 2
+
+    $default  reduce using rule 3 (prog)
+
+    prog  go to state 3
+
+
+state 1
+
+    1 prog: INT_CONST . prog
+
+    INT_CONST    shift, and go to state 1
+    FLOAT_CONST  shift, and go to state 2
+
+    $default  reduce using rule 3 (prog)
+
+    prog  go to state 4
+
+
+state 2
+
+    2 prog: FLOAT_CONST . prog
+
+    INT_CONST    shift, and go to state 1
+    FLOAT_CONST  shift, and go to state 2
+
+    $default  reduce using rule 3 (prog)
+
+    prog  go to state 5
+
+
+state 3
+
+    0 $accept: prog . $end
+
+    $end  shift, and go to state 6
+
+
+state 4
+
+    1 prog: INT_CONST prog .
+
+    $default  reduce using rule 1 (prog)
+
+
+state 5
+
+    2 prog: FLOAT_CONST prog .
+
+    $default  reduce using rule 2 (prog)
+
+
+state 6
+
+    0 $accept: prog $end .
+
+    $default  accept

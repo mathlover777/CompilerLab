@@ -1,0 +1,24 @@
+S VE AE
+S SE
+VE T VE'
+VE' + T VE'
+VE' * SE VE'
+VE' epsilon
+AE # V
+AE . V
+AE epsilon
+SE NORM V
+SE id
+T V T'
+T' X V T'
+T' epsilon
+V ( VE )
+V VEC
+VEC [ ID ]
+ID  id ID'
+ID' , id ID'
+ID' epsilon
+PRODEND
+S VE VE' AE SE T T' V VEC ID ID'
+id NORM ( [ , ) ] * X # + .
+S

@@ -1,0 +1,17 @@
+<INT> - An integer (used in CMUL or init statement)
+<ID> - An identifier (eg - Matrix name)
+<ADD> - The add statement
+<MMUL> - The MMUL statement
+<CMUL> - The CMUL statement
+<DEF> - The DEF statement
+<INIT> - The INIT statement
+
+<PRINT> - Print statement
+<COMMA> - for a comma(,)
+<ENDS> - For a end statement semicolon(;)
+
+<ENDR> - For an end row colon(:)
+
+<SQBKTO> - Opening Square-Bracket ( [ )
+
+<SQBKTC> - Closing Square-Bracket ( ] )

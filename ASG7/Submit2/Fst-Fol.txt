@@ -1,0 +1,45 @@
+( [
+NORM id
+( [
++
+*
+epsilon
+#
+.
+epsilon
+NORM
+id
+( [
+X
+epsilon
+(
+[
+[
+id
+,
+epsilon
+FIRSTPRODEND
+( [ NORM id
+( [
++ * epsilon
+# . epsilon
+NORM id
+( [
+X epsilon
+( [
+[
+id
+, epsilon
+FIRSTNTEND
+$
+# . $ )
+# . $ )
+$
+$ + * # . )
++ * # . $ )
++ * # . $ )
+$ + * # . ) X
+$ + * # . ) X
+]
+]
+FOLLOWEND

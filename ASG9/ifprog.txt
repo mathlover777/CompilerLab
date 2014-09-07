@@ -1,0 +1,25 @@
+global
+	def
+		a,b:int;
+		c:int;
+		sum:float;
+		xpos:float;
+		ypos,z,d:float;
+		temp:int;
+	end
+	if b = 0 :
+		print %f xpos;
+		a:= a + 1;
+	else
+		print %f ypos;
+		while a < b:
+			a:= a * 2;
+			sum := sum + temp;
+			while a < b:
+				temp:=c * 2;
+				temp:=temp + temp;
+			end 
+			sum := a + xpos;
+		end
+	end
+end

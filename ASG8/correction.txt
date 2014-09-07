@@ -1,0 +1,14 @@
+typeList :	typeList varList COLON type SEMICOLON
+| varList COLON type SEMICOLON
+| typeList typeDef
+;
+stmtList :	stmtList stmt
+| stmt
+;
+stmt :	assignmentStmt SEMICOLON
+| readStmt SEMICOLON
+| printStmt SEMICOLON
+| ifStmt
+| whileStmt
+| returnStmt SEMICOLON
+;
